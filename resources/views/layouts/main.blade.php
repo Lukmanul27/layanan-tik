@@ -153,7 +153,6 @@
   <!-- End Hero Section -->
 
   <main id="main">
-
     <!-- ======= About Us Section ======= -->
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
@@ -182,15 +181,9 @@
               <p>
                 Salah satu aspek positif lainnya adalah bagaimana teknologi dapat digunakan untuk mencari solusi dalam isu lingkungan dan keberlanjutan. Teknologi ramah lingkungan, seperti penggunaan energi terbarukan dan metode pengelolaan limbah yang inovatif, berperan dalam mengurangi dampak lingkungan dan membantu menjaga keberlanjutan planet kita.
               </p>
-
-              <div class="position-relative mt-4">
-                <img src="assets_skpd/img/about-2.jpg" class="img-fluid rounded-4" alt="">
-                <a href="https://youtu.be/sOSET6uJgJY?si=Pb1YBd7XgCpu8CG5" class="glightbox play-btn"></a>
-              </div>
             </div>
           </div>
         </div>
-
       </div>
     </section><!-- End About Us Section -->
 

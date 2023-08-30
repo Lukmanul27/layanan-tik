@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pelayanan;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class PelayananController extends Controller
 {

@@ -10,14 +10,20 @@
         </div>
         <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
             @foreach ($pelayanan as $item)
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item  position-relative">
-                    <div class="icon">
-                        <i class="bi bi-arrow-down-left-square"></i>
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="icon">
+                                    <i class="bi bi-award-fill"></i>
+                                </div>
+                                <h3>{{ $item->nama }}</h3>
+                                <p>{{ $item->deskripsi }}</p>
+                                <a href="{{ route('ajukan.index') }}" class="readmore stretched-link">Ajukan <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
                     </div>
-                    <h3>{{$item->nama}}</h3>
-                    <p>{{$item->deskripsi }}</p>
-                    <a href="#" class="readmore stretched-link">Ajukan <i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
             @endforeach

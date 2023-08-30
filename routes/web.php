@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AjukanController;
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\AwalController;
 use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuperadminController;
@@ -19,10 +21,6 @@ use App\Http\Controllers\SkpdController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
-
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index']);
@@ -30,3 +28,6 @@ Route::resource('/superadmin', SuperadminController::class);
 Route::resource('/role', RoleController::class);
 Route::resource('/pelayanan', PelayananController::class);
 Route::resource('/akun', AkunController::class);
+Route::resource('/', AwalController::class);
+
+Route::resource('/ajukan', AjukanController::class);

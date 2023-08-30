@@ -39,18 +39,19 @@
   ======================================================== -->
 </head>
 
-<body>
+<body class="hero">
 
     <!-- ======= Header ======= -->
-    @include('layouts.navbar')
+    {{-- @include('layouts.navbar') --}}
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
-    @include('partials.dbh')
-@include('partials.about')
+    <section id="dashboard" class="hero">
+        <div class="container position-relative">
+            <main class="py-4">
+                @yield('content')
+            </main>
+        </div>
+    </section>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-
-@include('partials.footer')
+    @include('partials.footer')
