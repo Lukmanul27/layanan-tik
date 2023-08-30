@@ -51,7 +51,7 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Data Akun User</h6>
-                    <a class="collapse-item" href="{{ route('superadmin.index') }}">Data Akun</a>
+                    <a class="collapse-item" href="{{ route('akun.index') }}">Data Akun</a>
                     <hr />
                     <h6 class="collapse-header">Kelola Akun User</h6>
                     <a class="collapse-item" href="{{ route('superadmin.create') }}">Tambah User</a>
@@ -70,8 +70,7 @@
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Daftar Pelayanan</h6>
-                    <a class="collapse-item" href="{{ route('pelayanan.index') }}">Tambah Form</a>
-                    <a class="collapse-item" href="{{ route('pelayanan.show') }}">Daftar Pelayanan</a>
+                    <a class="collapse-item" href="{{ route('pelayanan.index') }}">Form Pelayanan</a>
                     <a class="collapse-item" href="">Daftar Permintaan</a>
                 </div>
             </div>

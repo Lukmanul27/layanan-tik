@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AkunController;
 use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuperadminController;
@@ -25,8 +26,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index']);
-
 Route::resource('/superadmin', SuperadminController::class);
-
 Route::resource('/role', RoleController::class);
 Route::resource('/pelayanan', PelayananController::class);
+Route::resource('/akun', AkunController::class);

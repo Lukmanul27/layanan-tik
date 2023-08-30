@@ -50,11 +50,5 @@ class PelayananController extends Controller
 
          return redirect()->route('pelayanan.index')->with('success', 'Pelayanan delete successfully');
      }
-     public function show(Pelayanan $pelayanan)
-    {
-        $pelayanan = Pelayanan::findOrFail($pelayanan);
-
-        return view('pelayanan.show');
-    }
 
 }

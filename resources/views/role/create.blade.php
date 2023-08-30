@@ -7,19 +7,26 @@
         <h1 class="h3 mb-0 text-gray-800">Tambah Role</h1>
     </div>
     <hr />
-
-    <form action="{{ route('role.store') }}" method="POST">
-        @csrf
-        <div class="row mb-3">
-            <div class="col">
-                <input type="text" name="name" class="form-control" placeholder="Role Name">
+    <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <form action="{{ route('role.store') }}" method="POST">
+                        @csrf
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="text" name="name" class="form-control" placeholder="Role Name">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="d-grid">
+                                <button class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="d-grid">
-                <button class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-    </form>
+    </div>
 </div>
 @endsection
