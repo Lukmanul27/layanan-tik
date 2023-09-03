@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -14,7 +14,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::orderBy('created_at', 'DESC')->get();
+        $roles = Role::with('users')->get();
 
         return view('role.index', compact('roles'));
     }

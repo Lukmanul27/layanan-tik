@@ -2,9 +2,9 @@
 
 @section('content')
 
+@foreach ($pelayanan as $item)
 <section>
     <div class="container" data-aos="fade-up">
-        @foreach ($pelayanan as $item)
         <div class="section-header">
             <h2>Ajukan Layanan {{$item->nama}}</h2>
             <p>Silahkan lengkapi form berikut</p>

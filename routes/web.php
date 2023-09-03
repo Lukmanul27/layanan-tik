@@ -4,6 +4,7 @@ use App\Http\Controllers\AjukanController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AwalController;
 use App\Http\Controllers\PelayananController;
+use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuperadminController;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,4 @@ Route::resource('/akun', AkunController::class);
 Route::resource('/', AwalController::class);
 
 Route::resource('/ajukan', AjukanController::class);
+Route::resource('/petugas', PetugasController::class);

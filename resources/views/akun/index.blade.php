@@ -21,7 +21,6 @@
                             <th>#</th>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Password</th>
                             <th>Aksi</th>
                         </thead>
                         <tbody>
@@ -30,7 +29,6 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->email}}</td>
-                                <td>{{$item->password}}</td>
                                 <td>
                                     <a href="{{route('akun.edit',$item->id)}}" class="badge bg-warning">Reset
                                         Password</a>

@@ -12,46 +12,30 @@
 
     <div class="card border-left-info shadow h-100 py-2">
         <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    @if($roles->count() > 0)
-                    @foreach($roles as $role)
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            <h5 class="mb-0">{{ $role->name }}</h5>
-                                        </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800" style="opacity: 0.7">
-                                            {{ $role->guard_name }}</div>
-                                    </div>
-                                    <div class="col-auto d-flex justify-content-center align-items-center">
-                                        <a href="{{ route('role.edit', $role->id) }}"
-                                            class="btn btn-success mx-2">Edit</a>
-                                        <form action="{{ route('role.destroy', $role->id) }}" method="POST"
-                                            onsubmit="return confirm('Delete?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger mx-2">Hapus</button>
-                                        </form>
-                                    </div>
+            {{-- <div class="row no-gutters align-items-center"> --}}
+            <div class="col mr-2">
 
-                                </div>
-                            </div>
-                        </div>
+                @foreach($roles as $role)
+                <div class="card mb-2">
+                    <div class="card-header">
+                        {{ $role->name }}
+                        <a href="" style="float: right">Tambah</a>
                     </div>
-                    @endforeach
-                    @else
-                    <p class="text-center">Role not found</p>
-                    @endif
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            @foreach ($role->users as $row)
+                            <li class="list-group-item">
+                                {{ $row->name }}
 
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
-
 </div>
 
 @endsection

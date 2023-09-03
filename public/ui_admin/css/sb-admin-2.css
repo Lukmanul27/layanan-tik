@@ -84,6 +84,12 @@ body {
     background-color: #fff;
 }
 
+/* Gaya scrollbar */
+.scrollable-content {
+    max-height: 300px; /* Tentukan tinggi maksimum card yang akan menampilkan scrollbar */
+    overflow-y: auto; /* Aktifkan scrollbar vertikal saat konten melebihi tinggi maksimum */
+}
+
 [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important;
 }

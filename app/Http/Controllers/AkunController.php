@@ -17,7 +17,13 @@ class AkunController extends Controller
 
     public function destroy(User $akun){
         $akun->delete();
-
         return redirect()->route('akun.index')->with('success', 'User delete successfully');
      }
+
+     public function edit($id)
+    {
+        $akun = User::findOrFail($id);
+
+        return view('akun.edit', compact('akun'));
+    }
 }

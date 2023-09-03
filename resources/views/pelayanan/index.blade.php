@@ -18,7 +18,7 @@
                             <th>#</th>
                             <th>Nama</th>
                             <th>Deskripsi</th>
-                            <th>Petugas</th>
+                            <th>Data</th>
                             <th>Aksi</th>
                         </thead>
                         <tbody>
