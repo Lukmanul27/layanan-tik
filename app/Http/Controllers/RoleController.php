@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Spatie\Permission\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -60,11 +61,11 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Role $role)
     {
-        $role = Role::findOrFail($id);
+        $user=User::get();
 
-        return view('role.show', compact('role'));
+        return view('role.add', compact('role','user'));
     }
 
     /**
@@ -109,5 +110,12 @@ class RoleController extends Controller
         $role->delete();
 
         return redirect()->route('role.index')->with('success', 'Role deleted successfully');
+    }
+
+    public function add(Request $request)
+    {
+        $user=User::whereId($request->user_id)->first();
+        $user->assignRole($request->name);
+        return redirect()->route('role.index')->with('success', 'user berhasil ditambahkan!');
     }
 }

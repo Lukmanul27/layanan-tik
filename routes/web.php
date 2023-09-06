@@ -33,3 +33,5 @@ Route::resource('/', AwalController::class);
 
 Route::resource('/ajukan', AjukanController::class);
 Route::resource('/petugas', PetugasController::class);
+
+Route::post('role-add',[RoleController::class,'add'])->name('role-add.store');
