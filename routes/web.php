@@ -25,17 +25,12 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index']);
 Route::resource('/superadmin', SuperadminController::class);
-
 Route::resource('/role', RoleController::class);
-Route::post('role-add', [RoleController::class, 'add'])->name('role-add.store');
-
 Route::resource('/pelayanan', PelayananController::class);
-
 Route::resource('/akun', AkunController::class);
-
 Route::resource('/', AwalController::class);
 
 Route::resource('/ajukan', AjukanController::class);
-
 Route::resource('/petugas', PetugasController::class);
 
+Route::post('role-add',[RoleController::class,'add'])->name('role-add.store');
