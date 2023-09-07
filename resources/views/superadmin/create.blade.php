@@ -55,14 +55,14 @@
                                     name="password_confirmation" required autocomplete="new-password">
                             </div>
 
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="role" class="form-label">Select Role</label>
                                 <select id="role" name="role" class="form-control">
                                     @foreach($roles as $role)
                                     <option value="{{ $role->id }}">{{ $role->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="d-grid">
                                 <button class="btn btn-primary">Submit</button>
                             </div>

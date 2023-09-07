@@ -21,12 +21,13 @@
                             <hr />
                             {{ $item->form }}
                         </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
 </section>
-@endforeach
 
 @endsection

@@ -13,7 +13,8 @@
     <link href="{{ asset('ui_admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('ui_admin/css/sb-admin-2.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 </head>
 
 <body id="page-top">
@@ -129,9 +130,7 @@
     <script src="{{ asset('ui_admin/js/sb-admin-2.min.js') }}"></script>
     <script src="{{ asset('ui_admin/vendor/chart.js/Chart.min.js') }}"></script>
     <script src="{{ asset('ui_admin/js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('ui_admin/js/demo/chart-pie-demo.js') }}"></script>
     @include('sweetalert::alert')
-
 
     @stack('script')
 

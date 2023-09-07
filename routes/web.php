@@ -9,6 +9,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuperadminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SkpdController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,7 @@ Route::resource('/ajukan', AjukanController::class);
 Route::resource('/petugas', PetugasController::class);
 
 Route::post('role-add',[RoleController::class,'add'])->name('role-add.store');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
