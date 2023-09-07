@@ -60,7 +60,6 @@
                     });
 
                 </script>
-
             </div>
         </div>
     </div>

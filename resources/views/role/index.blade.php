@@ -19,14 +19,14 @@
                 <div class="card mb-2">
                     <div class="card-header">
                         {{ $role->name }}
-                        <a href="" style="float: right">Tambah</a>
+                        <a href="{{ route('role.show',$role->id) }}" style="float: right">Tambah</a>
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
                             @foreach ($role->users as $row)
                             <li class="list-group-item">
                                 {{ $row->name }}
-
+                                <a href="" class="floating-right text-danger" onclick="return confirm('Apakah anda yakin?')">hapus</a>
                             </li>
                             @endforeach
                         </ul>
@@ -37,5 +37,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection
