@@ -69,7 +69,7 @@
         <div class="col-xl-6 col-md-6 mb-4">
             <div class="card border-left shadow h-100 py-2">
                 <div class="card-body">
-                    <div class="scrollable-content">
+                    {{-- <div class="scrollable-content"> --}}
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="font-weight-bold text-info text-uppercase mb-1">Form Pelayanan
@@ -81,7 +81,7 @@
                                 @endforeach
                             </div>
                         </div>
-                    </div>
+                    {{-- </div> --}}
                 </div>
             </div>
         </div>

@@ -71,7 +71,6 @@
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     </div>
-                    <hr />
                     <div class="container">
                         <div class="card border-left-success shadow h-100 py-2">
                             <div class="card-body">
