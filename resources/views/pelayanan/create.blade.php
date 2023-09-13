@@ -1,17 +1,24 @@
-@extends('layouts.superadmin_ui')
+@extends('layouts.admin_pages')
 
 @section('content')
-<div class="container-fluid">
-
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Tambah User</h1>
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h4>Form Pelayanan TIK</h4>
+                <p class="text-subtitle text-muted">Harap isi semua field yang dibutuhkan</p>
+            </div>
+        </div>
     </div>
-    <hr />
-    <div class="card border-left-success shadow h-100 py-2">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="container">
+
+    <section class="section">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Buat Form Pelayanan
+                    </div>
+                    <div class="card-body">
                         <form action="{{ route('pelayanan.store') }}" method="POST" id="form">
                             @csrf
                             <div class="mb-3">
@@ -21,7 +28,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="detail" class="form-label">Detail</label>
-                                <textarea name="deskripsi" id="" cols="30" rows="5" required
+                                <textarea name="deskripsi" id="detail" cols="30" rows="5" required
                                     class="form-control"></textarea>
                             </div>
                             <div id="form-builder" style="min-height: 500px"></div>
@@ -32,37 +39,32 @@
                         </form>
                     </div>
                 </div>
-
-
-                @endsection
-
-                @push('script')
-
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-                <script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
-                <script>
-                    jQuery(function ($) {
-                        var options = {
-                            showActionButtons: false,
-                            disableFields: ['autocomplete', 'paragraph', 'header', 'hidden', 'button',
-                                'file'
-                            ],
-                            disableActionButtons: ['data', 'clear', 'save']
-                        }
-
-                        let formBuilder = $('#form-builder').formBuilder(options);
-
-                        $("#form").submit(function (e) {
-                            let data = formBuilder.actions.getData('json');
-                            $("#form_input").val(data);
-                            return true;
-                        })
-                    });
-
-                </script>
-
             </div>
         </div>
-    </div>
+    </section>
 </div>
+@endsection
+
+@push('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
+<script>
+    jQuery(function ($) {
+        var options = {
+            showActionButtons: false,
+            disableFields: ['autocomplete', 'paragraph', 'header', 'hidden', 'button', 'file'],
+            disableActionButtons: ['data', 'clear', 'save']
+        }
+
+        let formBuilder = $('#form-builder').formBuilder(options);
+
+        $("#form").submit(function (e) {
+            let data = formBuilder.actions.getData('json');
+            $("#form_input").val(data);
+            return true;
+        });
+    });
+
+</script>
 @endpush

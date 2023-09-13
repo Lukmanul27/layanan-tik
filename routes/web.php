@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AjukanController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AwalController;
@@ -25,7 +26,7 @@ use App\Http\Controllers\SkpdController;
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index']);
-Route::resource('/superadmin', SuperadminController::class);
+Route::resource('/admin', AdminController::class);
 Route::resource('/role', RoleController::class);
 Route::resource('/pelayanan', PelayananController::class);
 Route::resource('/akun', AkunController::class);

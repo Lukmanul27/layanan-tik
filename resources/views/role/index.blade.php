@@ -1,4 +1,4 @@
-@extends('layouts.superadmin_ui')
+@extends('layouts.admin_pages')
 
 @section('content')
 <div class="container-fluid">
@@ -34,45 +34,6 @@
                     </div>
                 </div>
                 @endforeach
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Tambah User -->
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Create Role</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <div class="modal-body">
-                <div class="card border-left-success shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <form action="{{ route('role.store') }}" method="POST">
-                                    @csrf
-                                    <div class="row mb-3">
-                                        <div class="col">
-                                            <input type="text" name="name" class="form-control" placeholder="Role Name">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="d-grid">
-                                            <button class="btn btn-success">Submit</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
