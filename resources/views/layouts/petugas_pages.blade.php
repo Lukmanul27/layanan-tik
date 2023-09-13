@@ -15,7 +15,7 @@
 
 <body>
     <div id="app">
-        @include('partials.admin_side')
+        @include('partials.petugas_side')
         <div id="main">
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">

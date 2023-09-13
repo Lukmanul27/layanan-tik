@@ -3,6 +3,30 @@
 @section('content')
 <div class="page-heading">
     <h3>Dashboard</h3>
+    <li class="sidebar-item">
+        <div class="d-flex align-items-center">
+            <span class="sidebar-link">Dark</span>
+            <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
+                <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path
+                        d="M10.5 14.5c2.219 0 4-1.763 4-3.982a4.003 4.003 0 0 0-4-4.018c-2.219 0-4 1.781-4 4c0 2.219 1.781 4 4 4zM4.136 4.136L5.55 5.55m9.9 9.9l1.414 1.414M1.5 10.5h2m14 0h2M4.135 16.863L5.55 15.45m9.899-9.9l1.414-1.415M10.5 19.5v-2m0-14v-2"
+                        opacity=".3"></path>
+                    <g transform="translate(-210 -1)">
+                        <path d="M220.5 2.5v2m6.5.5l-1.5 1.5"></path>
+                        <circle cx="220.5" cy="11.5" r="4"></circle>
+                        <path d="m214 5l1.5 1.5m5 14v-2m6.5-.5l-1.5-1.5M214 18l1.5-1.5m-4-5h2m14 0h2">
+                        </path>
+                    </g>
+                </g>
+                </svg>
+                <div class="form-check form-switch fs-6">
+                    <input class="form-check-input me-0" type="checkbox" id="toggle-dark" />
+                    <label class="form-check-label"></label>
+                </div>
+            </div>
+        </div>
+    </li>
 </div>
 
 <div class="page-content">
@@ -93,7 +117,7 @@
                                     <!-- table with dark -->
                                     <div class="table-responsive">
                                         <div class="scrollable-content">
-                                            <table class="table table-dark">
+                                            <table class="table">
                                                 <thead>
                                                     <th></th>
                                                     <th>Nama</th>
@@ -116,64 +140,6 @@
                     </div>
                 </section>
             </div>
-            <div class="row">
-                <div class="col-12 col-xl-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="mb-0">Role User</h4>
-                        </div>
-                        <div class="card-content pb-4">
-                            @foreach ($role as $item)
-                            <div class="recent-message d-flex px-4 py-3 align-items-center">
-                                <div class="stats-icon red mb-2">
-                                    <i class="iconly-boldProfile"></i>
-                                </div>
-                                <div class="name ms-4">
-                                    <h6 class="text-muted mb-0">{{$item->name}}</h6>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-xl-8">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>List Pelayanan Masuk</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-lg">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Pelayanan</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar avatar-md">
-                                                        <img src="{{ asset('assets/images/faces/5.jpg') }}" />
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Si Cantik</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class="mb-0">
-                                                    Domain
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="col-12 col-lg-3">
@@ -191,6 +157,25 @@
                     @foreach ($pelayanan as $item)
                     <p class="font-semibold ms-3 mb-0">{{$loop->iteration}}. {{$item->nama}}</p>
                     @endforeach
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body py-4 px-4">
+                    <div class="card-header">
+                        <h4 class="mb-0">Role User</h4>
+                    </div>
+                    <div class="card-content pb-4">
+                        @foreach ($role as $item)
+                        <div class="recent-message d-flex px-4 py-3 align-items-center">
+                            <div class="stats-icon red mb-2">
+                                <i class="iconly-boldProfile"></i>
+                            </div>
+                            <div class="name ms-4">
+                                <h6 class="text-muted mb-0">{{$item->name}}</h6>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
