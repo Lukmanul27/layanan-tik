@@ -44,7 +44,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="{{ route('pengajuan.index') }}" class="sidebar-link">
                         <i class="bi bi-hexagon-fill"></i>
                         <span>Daftar Pengajuan</span>
                     </a>
@@ -72,7 +72,30 @@
                         <span>Role User</span>
                     </a>
                 </li>
-            </ul>
+
+                @guest
+                @if (Route::has('login'))
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('login') }}">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>{{ __('Sign In') }}</span>
+                </a>
+                </li>
+                @endif
+                @else
+                <li class="sidebar-item dropdown">
+                    <a class="sidebar-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span style="color: red;">{{ __('Sign Out') }}</span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
         </div>
+        </li>
+        @endguest
+        </ul>
     </div>
+</div>
 </div>

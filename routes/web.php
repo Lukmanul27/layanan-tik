@@ -5,6 +5,7 @@ use App\Http\Controllers\AjukanController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AwalController;
 use App\Http\Controllers\PelayananController;
+use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuperadminController;
@@ -31,12 +32,11 @@ Route::resource('/role', RoleController::class);
 Route::resource('/pelayanan', PelayananController::class);
 Route::resource('/akun', AkunController::class);
 Route::resource('/', AwalController::class);
+Route::resource('/pengajuan', PengajuanController::class);
 
 Route::resource('/ajukan', AjukanController::class);
 Route::resource('/petugas', PetugasController::class);
 
 Route::post('role-add',[RoleController::class,'add'])->name('role-add.store');
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

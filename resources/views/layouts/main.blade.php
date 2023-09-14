@@ -60,7 +60,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets_skpd/img/logo.png" alt=""> -->
-            <h1 style="font-size: 36px; font-weight: normal;">LAYANAN<span style="font-size: 68px; font-weight: bold;">TIK</span></h1>
+            <h1 style="font-size: 36px; font-weight: normal;">PE<span style="font-size: 68px; font-weight: bold;">TIK</span></h1>
           </a>
           <nav id="navbar" class="navbar">
             <ul>
@@ -104,7 +104,7 @@
     <div class="container position-relative">
       <div class="row gy-5" data-aos="fade-in">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
-          <h2>Selamat Datang di <span>Pelayanan TIK</span></h2>
+          <h2>Selamat Datang di <span>Pelayanan TIK DISKOMINFO Garut</span></h2>
           <p>Pelayanan Teknologi Informasi dan Telekomunikasi (Tik) merujuk pada serangkaian layanan yang berfokus pada penyediaan solusi teknologi informasi dan jaringan komunikasi untuk memenuhi kebutuhan organisasi, individu, atau pelanggan. Layanan ini mencakup berbagai aspek teknologi dan komunikasi yang mendukung operasi, efisiensi, inovasi, dan konektivitas.</p>
           <div class="d-flex justify-content-center justify-content-lg-start">
             <a href="#about" class="btn-get-started">Get Started</a>
