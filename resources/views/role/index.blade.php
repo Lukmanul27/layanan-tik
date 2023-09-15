@@ -5,9 +5,9 @@
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Role User</h1>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+        <a class="badge bg-success" href="{{ route('role.create') }}" role="button">
             Tamabah Role
-        </button>
+        </a>
     </div>
 
     <div class="card border-left-info shadow h-100 py-2">

@@ -28,6 +28,6 @@
         </div>
         @endforeach
     </div>
-</section>
 
+</section>
 @endsection

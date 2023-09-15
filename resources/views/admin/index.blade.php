@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="page-heading">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h3>Dashboard</h3>
     <li class="sidebar-item">
         <div class="d-flex align-items-center">

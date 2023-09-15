@@ -45,7 +45,7 @@
 
                 <li class="sidebar-item">
                     <a href="{{ route('pengajuan.index') }}" class="sidebar-link">
-                        <i class="bi bi-hexagon-fill"></i>
+                        <i class="bi bi-card-checklist"></i>
                         <span>Daftar Pengajuan</span>
                     </a>
                 </li>

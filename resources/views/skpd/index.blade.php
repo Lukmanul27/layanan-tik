@@ -20,7 +20,14 @@
                                 </div>
                                 <h3>{{ $item->nama }}</h3>
                                 <p>{{ $item->deskripsi }}</p>
-                                <a href="{{ route('ajukan.index') }}" class="readmore stretched-link">Ajukan <i class="bi bi-arrow-right"></i></a>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="badge bg-success" data-bs-toggle="modal"
+                                    data-bs-target="#ajukanModal">
+                                    Ajukan
+                                    <i class="bi bi-arrow-right"></i>
+                                </button>
+                                {{-- <a href="{{ route('ajukan.index', ['layanan_id' => $item->id]) }}"
+                                    class="readmore stretched-link">Ajukan <i class="bi bi-arrow-right"></i></a> --}}
                             </div>
                         </div>
                     </div>
@@ -46,18 +53,31 @@
                     </div>
                 </div>
                 <!--End Icon Box -->
-
-                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon-box">
-                        <div class="icon"><i class="bi bi-recycle"></i></div>
-                        <h4 class="title"><a href="" class="stretched-link">Layanan Diproses</a></h4>
-                    </div>
-                </div>
-                <!--End Icon Box -->
             </div>
         </div>
     </div>
 </section>
 </main><!-- End #main -->
+
+<!-- Modal -->
+@foreach ($pelayanan as $item)
+<div class="modal fade" id="ajukanModal" tabindex="-1" aria-labelledby="ajukanModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ajukanModalLabel">Pelayanan {{$item->nama}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {{ $item->form }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 
 @endsection
