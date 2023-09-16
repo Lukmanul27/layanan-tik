@@ -25,18 +25,23 @@ use App\Http\Controllers\SkpdController;
 */
 
 Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index']);
-Route::resource('/admin', AdminController::class);
-Route::resource('/role', RoleController::class);
-Route::resource('/pelayanan', PelayananController::class);
-Route::resource('/akun', AkunController::class);
 Route::resource('/', AwalController::class);
-Route::resource('/pengajuan', PengajuanController::class);
 
-Route::resource('/ajukan', AjukanController::class);
-Route::resource('/petugas', PetugasController::class);
+Route::middleware(['auth', 'checkrole:admin'])->group(function () {
+    Route::resource('/admin', AdminController::class);
+    Route::resource('/pelayanan', PelayananController::class);
+    Route::resource('/pengajuan', PengajuanController::class);
+    Route::resource('/akun', AkunController::class);
+    Route::resource('/role', RoleController::class);
+    Route::post('role-add',[RoleController::class,'add'])->name('role-add.store');
+});
 
-Route::post('role-add',[RoleController::class,'add'])->name('role-add.store');
+Route::middleware(['auth', 'checkrole:skpd'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index']);
+    Route::resource('/ajukan', AjukanController::class);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
+    Route::resource('/petugas', PetugasController::class);
+});
