@@ -47,10 +47,14 @@
 
     <!-- ======= Hero Section ======= -->
     @include('partials.dbh')
-@include('partials.about')
+    @include('partials.about')
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+    <main class="py-4">
+        @yield('content')
+    </main>
 
-@include('partials.footer')
+    @include('partials.footer')
+    @stack('script')
+</body>
+
+</html>

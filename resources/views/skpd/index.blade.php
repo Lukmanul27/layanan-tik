@@ -45,7 +45,6 @@
     <div class="icon-boxes position-relative">
         <div class="container position-relative">
             <div class="row gy-4 mt-5 justify-content-center">
-                <!-- Tambahkan class justify-content-center di sini -->
                 <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="icon-box">
                         <div class="icon"><i class="bi bi-box-arrow-up-right"></i></div>
@@ -69,7 +68,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                {{ $item->form }}
+                <div id="dynamic-form-fields" style="min-height: 500px"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -81,3 +80,41 @@
 @endforeach
 
 @endsection
+
+@push('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
+<script>
+    var formData = {!! $item->form !!};
+
+    function renderDynamicFormFields(formData) {
+        var dynamicFormFields = document.getElementById('dynamic-form-fields');
+        formData.forEach(function (fieldData) {
+            var div = document.createElement('div');
+            div.className = 'mb-3';
+
+            if (fieldData.type === 'text') {
+                var label = document.createElement('label');
+                label.setAttribute('for', fieldData.name);
+                label.className = 'form-label';
+                label.innerText = fieldData.label;
+
+                var input = document.createElement('input');
+                input.type = 'text';
+                input.name = fieldData.name;
+                input.className = 'form-control';
+
+                div.appendChild(label);
+                div.appendChild(input);
+            } else if (fieldData.type === 'date') {
+                // Handle date field rendering here
+            }
+
+            dynamicFormFields.appendChild(div);
+        });
+    }
+
+    renderDynamicFormFields(formData);
+</script>
+@endpush
