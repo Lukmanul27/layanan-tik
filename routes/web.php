@@ -9,6 +9,7 @@ use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuperadminController;
+use App\Http\Controllers\UserPelayananController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SkpdController;
@@ -27,21 +28,23 @@ use App\Http\Controllers\SkpdController;
 Auth::routes();
 Route::resource('/', AwalController::class);
 
-Route::middleware(['auth', 'checkrole:admin'])->group(function () {
+// Route::middleware(['auth', 'checkrole:admin'])->group(function () {
     Route::resource('/admin', AdminController::class);
     Route::resource('/pelayanan', PelayananController::class);
     Route::resource('/pengajuan', PengajuanController::class);
     Route::resource('/akun', AkunController::class);
     Route::resource('/role', RoleController::class);
     Route::post('role-add',[RoleController::class,'add'])->name('role-add.store');
-});
+// });
 
-Route::middleware(['auth', 'checkrole:skpd'])->group(function () {
+// Route::middleware(['auth', 'checkrole:skpd'])->group(function () {
     Route::get('/home', [HomeController::class, 'index']);
     Route::resource('/ajukan', AjukanController::class);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-});
+// });
 
-Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
+// Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
     Route::resource('/petugas', PetugasController::class);
-});
+// });
+
+Route::resource('/ajukan', UserPelayananController::class);

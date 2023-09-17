@@ -57,7 +57,6 @@
     <!-- ======= Portfolio Section ======= -->
     <section id="tutorial" class="tutorial sections-bg">
         <div class="container" data-aos="fade-up">
-
             <div class="section-header">
                 <h2>Cara Mengajukan Layanan</h2>
                 <p>Berikut merupakan cara dalam mengajukan sebuah layanan TIK</p>
@@ -73,8 +72,8 @@
                                 <i class="bi bi-1-circle-fill"></i>
                             </div>
                             <h3>Pertama</h3>
-                            <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque
-                                eum hic non ut nesciunt dolorem.</p>
+                            <p> Langkah pertama yang perlu Anda lakukan adalah masuk ke dalam sistem dengan melakukan
+                                login terlebih dahulu.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
@@ -83,8 +82,9 @@
                                 <i class="bi bi-2-circle-fill"></i>
                             </div>
                             <h3>Kedua</h3>
-                            <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque
-                                eum hic non ut nesciunt dolorem.</p>
+                            <p>Setelah berhasil masuk, langkah berikutnya adalah menuju ke bagian "Pelayanan" yang
+                                terdapat dalam menu utama. Di sana, Anda akan menemukan berbagai jenis layanan yang
+                                tersedia.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
@@ -93,8 +93,7 @@
                                 <i class="bi bi-3-circle-fill"></i>
                             </div>
                             <h3>Ketiga</h3>
-                            <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque
-                                eum hic non ut nesciunt dolorem.</p>
+                            <p>Langkah ketiga adalah memilih pelayanan yang sesuai dengan kebutuhan Anda.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
@@ -103,8 +102,8 @@
                                 <i class="bi bi-4-circle-fill"></i>
                             </div>
                             <h3>Keempat</h3>
-                            <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque
-                                eum hic non ut nesciunt dolorem.</p>
+                            <p>Setelah menemukan pelayanan yang diinginkan, langkah selanjutnya adalah mengklik tombol
+                                "Ajukan" yang terdapat di bawah deskripsi layanan tersebut.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
@@ -113,14 +112,34 @@
                                 <i class="bi bi-5-circle-fill"></i>
                             </div>
                             <h3>Kelima</h3>
-                            <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque
-                                eum hic non ut nesciunt dolorem.</p>
+                            <p>Setelah Anda mengklik tombol "Ajukan", sistem akan membuka formulir pengajuan yang perlu
+                                Anda isi. Pastikan untuk mengisi semua kolom yang dibutuhkan dengan informasi yang
+                                akurat dan lengkap. Formulir ini berfungsi sebagai sarana untuk mengumpulkan data yang
+                                diperlukan dalam proses pelayanan.</p>
                         </div>
                     </div>
-
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service-item position-relative">
+                            <div class="icon">
+                                <i class="bi bi-6-circle-fill"></i>
+                            </div>
+                            <h3>Keenam</h3>
+                            <p>Setelah formulir terisi dengan benar, langkah berikutnya adalah mengklik tombol "Submit"
+                                untuk mengirimkan pengajuan Anda. Setelah itu, Anda hanya perlu menunggu proses
+                                pelayanan hingga mendapatkan persetujuan atau verifikasi dari pihak terkait.</p>
+                        </div>
+                    </div>
                 </div>
                 <!-- End Portfolio Container -->
             </div>
-
+            <div class="section-header" style="text-align: center; margin: 20px;">
+                <h2 style="color: red; margin-top: 10px;">WARNING</h2>
+                <p style="margin-top: 10px;">
+                    Ingatlah bahwa setiap langkah dalam proses ini penting untuk memastikan bahwa pelayanan yang Anda
+                    ajukan dapat diproses dengan lancar dan efisien. Dengan mengikuti langkah-langkah ini dengan
+                    seksama, Anda dapat memastikan bahwa pengajuan pelayanan Anda akan segera diproses sesuai dengan
+                    kebutuhan Anda.
+                </p>
+            </div>
         </div>
-    </section><!-- End Portfolio Section -->
+    </section>
