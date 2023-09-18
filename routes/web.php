@@ -44,5 +44,5 @@ Route::group(["middleware" => ['role:petugas']], function () {
 
 Route::get('/home', [HomeController::class, 'index']);
 Route::resource('/pengajuan_in', IsianlayananController::class);
-Route::post('/pengajuan_in', 'IsianlayananController@store')->name('form.store');
+Route::post('pengajuan_in', 'PengajuanInController@store')->name('pengajuan_in.store');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

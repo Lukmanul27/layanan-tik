@@ -15,7 +15,9 @@ class IsianlayananController extends Controller
      */
     public function index()
     {
-        return view('Isianlayanan.index');
+        return view('Isianlayanan.index', [
+            'pelayanan' => Pelayanan::get()
+        ]);
     }
     /**
      * Show the form for creating a new resource.

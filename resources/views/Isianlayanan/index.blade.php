@@ -1,45 +1,43 @@
 @extends('layouts.ajukan')
 
 @section('content')
-<div class="page-heading">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h4>- Layanan {{ $form->nama }}</h4>
-                <p class="text-subtitle text-muted">-> Harap isi semua field yang dibutuhkan</p>
-            </div>
+    <div class="heading">
+        <div class="page-title">
         </div>
-    </div>
-    <section class="section">
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        Buat Form Pelayanan
-                    </div>
-                    <div class="card-body">
-                        <form method="post" action="{{ route("form.store", $form->id) }}">
-                            @csrf
-                            <div id="form-jenis"></div>
-                            <button type="submit" class="btn btn-secondary">Simpan</button>
-                        </form>
+        <section class="section">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h3>Layanan {{ $form->nama }}</h3>
+                            <p class="text-subtitle text-muted">Harap isi semua field yang dibutuhkan</p>
+                    <hr />
+                        </div>
+                        <div class="card-body">
+                            <form method="post" action="{{ route('pengajuan_in.store') }}">
+                                @csrf
+                                {{-- <input type="text" value="{{ $form->id }}" name="pelayanan_id"> --}}
+                                <div id="form-jenis"></div>
+                                <hr />
+                                <div class="text-center">
+                                    <button type="submit" class="badge bg-success"><i class="bi bi-floppy-fill"></i> Simpan</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://formbuilder.online/assets/js/form-render.min.js"></script>
+    <script>
+        var formData = JSON.parse({!! json_encode($form->form) !!});
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
-<script>
-    var formData = JSON.parse({!! json_encode($form->form) !!});
-
-    var formRenderOpts = {
-        formData,
-        dataType: 'json'
-    };
-    $('#form-jenis').formReder(formRenderOpts);
-
-</script>
+        var formRenderOpts = {
+            formData,
+            dataType: 'json'
+        };
+        $("#form-jenis").formRender(formRenderOpts);
+    </script>
 @endsection
