@@ -33,11 +33,11 @@ class LoginController extends Controller
     {
         // Periksa peran pengguna setelah berhasil login
         if ($user->hasRole('admin')) {
-            return redirect('/admin/dashboard');
+            return redirect('/admin');
         } elseif ($user->hasRole('petugas')) {
-            return redirect('/petugas/dashboard');
-        } elseif ($user->hasRole('skpd')) {
-            return redirect('/skpd/dashboard');
+            return redirect('/petugas');
+        } else {
+            return redirect('/home');
         }
     }
 

@@ -43,8 +43,7 @@ Route::resource('/', AwalController::class);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // });
 
-// Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
+Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
     Route::resource('/petugas', PetugasController::class);
-// });
+});
 
-Route::resource('/ajukan', UserPelayananController::class);

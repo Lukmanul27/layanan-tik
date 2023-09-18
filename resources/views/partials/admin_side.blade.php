@@ -77,9 +77,9 @@
                 @if (Route::has('login'))
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('login') }}">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>{{ __('Sign In') }}</span>
-                </a>
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <span>{{ __('Sign In') }}</span>
+                    </a>
                 </li>
                 @endif
                 @else
@@ -92,10 +92,9 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
+                </li>
+                @endguest
+            </ul>
         </div>
-        </li>
-        @endguest
-        </ul>
     </div>
-</div>
 </div>

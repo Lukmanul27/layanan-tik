@@ -31,29 +31,28 @@
                 <li><a href="#lacak">Pengajuan</a></li>
                 @guest
                 @if (Route::has('login'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Sign In') }}</a>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('login') }}">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <span>{{ __('Sign In') }}</span>
+                    </a>
                 </li>
                 @endif
                 @else
-                <li class="nav-item dropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                <li class="sidebar-item dropdown">
+                    <a class="sidebar-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                        <span>{{ __('Logout') }}</span>
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-    </div>
+                </li>
+                @endguest
+            </ul>
+        </nav><!-- .navbar -->
 
-    </li>
-    @endguest
-
-
-    </ul>
-    </nav><!-- .navbar -->
-
-    <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-    <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
     </div>
 </header><!-- End Header -->
