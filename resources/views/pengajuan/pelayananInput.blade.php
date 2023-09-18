@@ -4,10 +4,10 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-
+            {{ $form->nama }}
         </div>
         <div class="card-body">
-            <form method="post" action="">
+            <form method="post" action="{{ route("form.answer", $form->id) }}">
                 @csrf
                 <div id="form-jenis"></div>
                 <button type="submit" class="btn btn-success">Simpan</button>

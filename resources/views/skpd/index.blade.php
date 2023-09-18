@@ -26,8 +26,8 @@
                                     Ajukan
                                     <i class="bi bi-arrow-right"></i>
                                 </button>
-                                {{-- <a href="{{ route('ajukan.index', ['layanan_id' => $item->id]) }}"
-                                    class="readmore stretched-link">Ajukan <i class="bi bi-arrow-right"></i></a> --}}
+                                <a href="{{ route('ajukan.index') }}"
+                                    class="readmore stretched-link">Ajukan <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                 <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="icon-box">
                         <div class="icon"><i class="bi bi-box-arrow-up-right"></i></div>
-                        <h4 class="title"><a href="pengajuan" class="stretched-link">Layanan Yang Diajukan</a></h4>
+                        <h4 class="title"><a href="dashboard" class="stretched-link">Layanan Yang Diajukan</a></h4>
                     </div>
                 </div>
                 <!--End Icon Box -->

@@ -14,6 +14,11 @@ class PengajuanController extends Controller
         return view('pengajuan.index');
     }
 
+    public function dashboard()
+    {
+        return view('pengajuan.dashboard_skpd');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
