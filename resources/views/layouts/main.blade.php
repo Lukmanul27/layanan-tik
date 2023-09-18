@@ -266,7 +266,8 @@
                                     <i class="bi bi-4-circle-fill"></i>
                                 </div>
                                 <h3>Keempat</h3>
-                                <p>Setelah menemukan pelayanan yang diinginkan, langkah selanjutnya adalah mengklik tombol "Ajukan" yang terdapat di bawah deskripsi layanan tersebut.</p>
+                                <p>Setelah menemukan pelayanan yang diinginkan, langkah selanjutnya adalah mengklik
+                                    tombol "Ajukan" yang terdapat di bawah deskripsi layanan tersebut.</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
@@ -276,7 +277,8 @@
                                 </div>
                                 <h3>Kelima</h3>
                                 <p>Setelah Anda mengklik tombol "Ajukan", sistem akan membuka formulir pengajuan yang
-                                    perlu Anda isi. Pastikan untuk mengisi semua kolom yang dibutuhkan dengan informasi yang
+                                    perlu Anda isi. Pastikan untuk mengisi semua kolom yang dibutuhkan dengan informasi
+                                    yang
                                     akurat dan lengkap. Formulir ini berfungsi sebagai sarana untuk mengumpulkan data
                                     yang diperlukan dalam proses pelayanan.</p>
                             </div>
@@ -288,7 +290,8 @@
                                 </div>
                                 <h3>Keenam</h3>
                                 <p>Setelah formulir terisi dengan benar, langkah berikutnya adalah mengklik tombol
-                                    "Submit" untuk mengirimkan pengajuan Anda. Setelah itu, Anda hanya perlu menunggu proses
+                                    "Submit" untuk mengirimkan pengajuan Anda. Setelah itu, Anda hanya perlu menunggu
+                                    proses
                                     pelayanan hingga mendapatkan persetujuan atau verifikasi dari pihak terkait.</p>
                             </div>
                         </div>
@@ -299,7 +302,8 @@
                     <h2 style="color: red; margin-top: 10px;">WARNING</h2>
                     <p style="margin-top: 10px;">
                         Ingatlah bahwa setiap langkah dalam proses ini penting untuk memastikan bahwa pelayanan yang
-                        Anda ajukan dapat diproses dengan lancar dan efisien. Dengan mengikuti langkah-langkah ini dengan
+                        Anda ajukan dapat diproses dengan lancar dan efisien. Dengan mengikuti langkah-langkah ini
+                        dengan
                         seksama, Anda dapat memastikan bahwa pengajuan pelayanan Anda akan segera diproses sesuai dengan
                         kebutuhan Anda.
                     </p>

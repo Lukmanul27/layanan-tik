@@ -28,37 +28,40 @@
                                 <td>Tanggal Pengajuan</td>
                                 <td>
                                     <div class="btn-group">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      List Petugas
-                                    </button>
-                                    <div class="dropdown-menu">
-                                      <a class="dropdown-item" href="#">A</a>
-                                      <a class="dropdown-item" href="#">B</a>
-                                      <a class="dropdown-item" href="#">C</a>
+                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            List Petugas
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">A</a>
+                                            <a class="dropdown-item" href="#">B</a>
+                                            <a class="dropdown-item" href="#">C</a>
+                                        </div>
                                     </div>
-                                  </div>
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                          Status
+                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            Status
                                         </button>
                                         <div class="dropdown-menu">
-                                          <a class="dropdown-item" href="#">Selesai</a>
-                                          <a class="dropdown-item" href="#">Diproses</a>
+                                            <a class="dropdown-item" href="#">Selesai</a>
+                                            <a class="dropdown-item" href="#">Diproses</a>
                                         </div>
-                                      </div>
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                          Aksi
+                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            Aksi
                                         </button>
                                         <div class="dropdown-menu">
-                                          <a class="dropdown-item" href="#">ACC</a>
-                                          <a class="dropdown-item" href="#">Tolak</a>
+                                            <a class="dropdown-item" href="#">ACC</a>
+                                            <a class="dropdown-item" href="#">Tolak</a>
                                         </div>
-                                      </div>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -73,6 +76,7 @@
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 <script>
     $('#table').dataTable()
+
 </script>
 
 

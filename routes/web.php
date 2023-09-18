@@ -6,12 +6,13 @@ use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AwalController;
 use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\PengajuanController;
+use App\Http\Controllers\PengajuanInController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\UserPelayananController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IsianlayananController;
 use App\Http\Controllers\SkpdController;
 
 /*
@@ -37,13 +38,11 @@ Route::group(["middleware" => ['role:admin']], function () {
     Route::post('role-add',[RoleController::class,'add'])->name('role-add.store');
 });
 
-
-    Route::get('/home', [HomeController::class, 'index']);
-    Route::resource('/ajukan', AjukanController::class);
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 Route::group(["middleware" => ['role:petugas']], function () {
     Route::resource('/petugas', PetugasController::class);
 });
 
+Route::get('/home', [HomeController::class, 'index']);
+Route::resource('/pengajuan_in', IsianlayananController::class);
+Route::post('/pengajuan_in', 'IsianlayananController@store')->name('form.store');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

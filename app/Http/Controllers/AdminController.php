@@ -17,15 +17,13 @@ class AdminController extends Controller {
         $totalRole         = Role::count();
         // $totalPermintaan = Permintaan::count();
         $totalLayanan = Pelayanan::count();
+
         $pelayanan = Pelayanan::get();
         $akun         = User::get();
         $role         = Role::get();
 
         return view('admin.index', compact('totalUsers', 'totalLayanan', 'pelayanan', 'akun', 'totalRole', 'role'));
     }
-
-
-
     /**
      * Show the form for creating a new resource.
      */

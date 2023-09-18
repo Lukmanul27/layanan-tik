@@ -20,14 +20,8 @@
                                 </div>
                                 <h3>{{ $item->nama }}</h3>
                                 <p>{{ $item->deskripsi }}</p>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="badge bg-success" data-bs-toggle="modal"
-                                    data-bs-target="#ajukanModal">
-                                    Ajukan
-                                    <i class="bi bi-arrow-right"></i>
-                                </button>
-                                <a href="{{ route('ajukan.index') }}"
-                                    class="readmore stretched-link">Ajukan <i class="bi bi-arrow-right"></i></a>
+                                <a href="{{ route('pengajuan_in.show',$item->id)}}" class="badge bg-warning">Ajukan <i
+                                        class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -57,64 +51,4 @@
     </div>
 </section>
 </main><!-- End #main -->
-
-<!-- Modal -->
-@foreach ($pelayanan as $item)
-<div class="modal fade" id="ajukanModal" tabindex="-1" aria-labelledby="ajukanModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="ajukanModalLabel">Pelayanan {{$item->nama}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div id="dynamic-form-fields" style="min-height: 500px"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success">Submit</button>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
-
 @endsection
-
-@push('script')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
-<script>
-    var formData = {!! $item->form !!};
-
-    function renderDynamicFormFields(formData) {
-        var dynamicFormFields = document.getElementById('dynamic-form-fields');
-        formData.forEach(function (fieldData) {
-            var div = document.createElement('div');
-            div.className = 'mb-3';
-
-            if (fieldData.type === 'text') {
-                var label = document.createElement('label');
-                label.setAttribute('for', fieldData.name);
-                label.className = 'form-label';
-                label.innerText = fieldData.label;
-
-                var input = document.createElement('input');
-                input.type = 'text';
-                input.name = fieldData.name;
-                input.className = 'form-control';
-
-                div.appendChild(label);
-                div.appendChild(input);
-            } else if (fieldData.type === 'date') {
-                // Handle date field rendering here
-            }
-
-            dynamicFormFields.appendChild(div);
-        });
-    }
-
-    renderDynamicFormFields(formData);
-</script>
-@endpush

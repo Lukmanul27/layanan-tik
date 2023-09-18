@@ -2,57 +2,38 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DISKOMINFO | Pelayanan TIK</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/main/app-dark.css') }}" />
+    {{-- <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.svg') }}" type="image/x-icon" /> --}}
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png') }}" type="image/png" />
+    <link rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}" />
 
-    <title>Layanan TIK | DISKOMINFO</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Favicons -->
-    <link href="{{ 'assets_skpd/img/favicon.png' }}" rel="icon">
-    <link href="{{ 'assets_skpd/img/apple-touch-icon.png' }}" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="{{ 'assets_skpd/vendor/bootstrap/css/bootstrap.min.css' }}" rel="stylesheet">
-    <link href="{{ 'assets_skpd/vendor/bootstrap-icons/bootstrap-icons.css' }}" rel="stylesheet">
-    <link href="{{ 'assets_skpd/vendor/aos/aos.css' }}" rel="stylesheet">
-    <link href="{{ 'assets_skpd/vendor/glightbox/css/glightbox.min.css' }}" rel="stylesheet">
-    <link href="{{ 'assets_skpd/vendor/swiper/swiper-bundle.min.css' }}" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="{{ 'assets_skpd/css/main.css' }}" rel="stylesheet">
-
-    <!-- =======================================================
-  * Template Name: Impact
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
-<body class="hero">
-
-    <!-- ======= Header ======= -->
-    {{-- @include('layouts.navbar') --}}
-    <!-- End Header -->
-
-    <!-- ======= Hero Section ======= -->
-    <section id="dashboard" class="hero">
-        <div class="container position-relative">
+<body>
+    <div id="app">
+        <div id="main_xx">
             <main class="py-4">
                 @yield('content')
             </main>
         </div>
-    </section>
+    </div>
 
-    @include('partials.footer')
-    @stack('script')
+    <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+    <!-- Need: Apexcharts -->
+    <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
+    <script src="{{ asset('ui_admin/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('ui_admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('ui_admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('ui_admin/js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ asset('ui_admin/vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('ui_admin/js/demo/chart-area-demo.js') }}"></script>
+    @include('sweetalert::alert')
+</body>
+
+</html>

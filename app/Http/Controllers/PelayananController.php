@@ -52,5 +52,4 @@ class PelayananController extends Controller
 
          return redirect()->route('pelayanan.index')->with('success', 'Pelayanan delete successfully');
      }
-
 }
