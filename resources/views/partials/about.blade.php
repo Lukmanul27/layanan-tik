@@ -65,7 +65,6 @@
             <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry"
                 data-portfolio-sort="original-order" data-aos="fade-up" data-aos-delay="100">
                 <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
-
                     <div class="col-lg-4 col-md-6">
                         <div class="service-item position-relative">
                             <div class="icon">

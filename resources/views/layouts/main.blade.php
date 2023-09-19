@@ -80,24 +80,28 @@
                     @endif
                     @else
                     <li class="nav-item dropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-        </div>
 
-        </li>
-        @endguest
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
 
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
+                </ul>
+            </nav><!-- .navbar -->
 
-        </ul>
-        </nav><!-- .navbar -->
-
-        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+            <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         </div>
     </header><!-- End Header -->
     <!-- End Header -->
@@ -324,12 +328,15 @@
                         <h1 href="/" class="d-flex align-items-center">
                             <span><strong>Dinas Komunikasi dan Informatika</strong></span>
                         </h1>
-                        <p>Jl. Pembangunan No.181, Sukagalih, Kec. Tarogong Kidul, Kabupaten Garut, Jawa Barat 44151.</p>
+                        <p>Jl. Pembangunan No.181, Sukagalih, Kec. Tarogong Kidul, Kabupaten Garut, Jawa Barat 44151.
+                        </p>
                         <div class="social-links d-flex mt-4">
                             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                            <a href="https://www.instagram.com/diskominfogrt/" class="instagram"><i class="bi bi-instagram"></i></a>
-                            <a href="https://www.youtube.com/channel/UCaqI99yUtWOcakSRYUEVAEQ" class="linkedin"><i class="bi bi-youtube"></i></a>
+                            <a href="https://www.instagram.com/diskominfogrt/" class="instagram"><i
+                                    class="bi bi-instagram"></i></a>
+                            <a href="https://www.youtube.com/channel/UCaqI99yUtWOcakSRYUEVAEQ" class="linkedin"><i
+                                    class="bi bi-youtube"></i></a>
                         </div>
                     </div>
                 </div>

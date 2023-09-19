@@ -12,7 +12,7 @@
             @foreach ($pelayanan as $item)
             <div class="col-xl-4 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
+                    <div class="card-body" data-aos="fade-down">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="icon">
@@ -32,22 +32,34 @@
     </div>
 </section>
 
-<section id="lacak" class="hero">
-    <div class="container position-relative">
-        <h2 class="text-center">Lihat Proses Pengajuan Layanan</h2>
+<section id="lacak" class="lacak sections-bg">
+    <div class="container text-center" data-aos="fade-up">
+        <h2>Progres Pengajuan</h2>
+        <p>Berikut Merupakan Pengajuan Layanan Anda</p>
     </div>
     <div class="icon-boxes position-relative">
         <div class="container position-relative">
-            <div class="row gy-4 mt-5 justify-content-center">
-                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon-box" href="{{ route('tracking.index') }}">
-                        <div class="icon"><i class="bi bi-box-arrow-up-right"></i></div>
-                        <h4 class="title"><a href="{{ route('tracking.index') }}" class="stretched-link">Layanan Yang Diajukan</a></h4>
-                    </div>
-                </div>
-            </div>
+            <table class="table" data-aos="fade-down">
+                <thead>
+                    <th></th>
+                    <th>Nama</th>
+                    <th>Nama Layanan</th>
+                    <th>Tanggal</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Nama</td>
+                        <td>Layanan</td>
+                        <td>Tanggal</td>
+                        <td>Status</td>
+                        <td>Aksi</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </section>
-</main><!-- End #main -->
 @endsection

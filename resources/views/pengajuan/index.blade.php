@@ -30,17 +30,15 @@
                                 <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
                                 <td>{{ $data->updated_at->format('Y-m-d') }}</td>
                                 <td>
-                                    <div class="btn-group mb-1">
-                                        <div class="dropdown">
-                                            <button class="btn btn-outline-success dropdown-toggle me-1" type="button"
-                                                id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
-                                                Petugas
-                                            </button>
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-info dropdown-toggle me-1" type="button"
+                                            id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            <span id="selectedPetugas">Petugas</span>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
                                             @foreach ($petugasUsers as $petugas)
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
-                                                <a class="dropdown-item" href="#">{{ $petugas->nama }}</a>
-                                            </div>
+                                                <a class="dropdown-item petugas-item" href="#" data-petugas="{{ $petugas->name }}">{{ $petugas->name }}</a>
                                             @endforeach
                                         </div>
                                     </div>
@@ -48,14 +46,15 @@
                                 <td>
                                     <div class="btn-group mb-1">
                                         <div class="dropdown">
-                                            <button class="btn btn-outline-info dropdown-toggle me-1" type="button"
-                                                id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true"
+                                            <button class="btn btn-outline-success dropdown-toggle me-1" type="button"
+                                                id="dropdownMenuStatus" data-bs-toggle="dropdown" aria-haspopup="true"
                                                 aria-expanded="false">
-                                                Status
+                                                <span id="selectedStatus">Status</span>
                                             </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
-                                                <a class="dropdown-item status-item" href="#" data-status="ACC">Diterima</a>
-                                                <a class="dropdown-item status-item" href="#" data-status="DITOLAK">Ditolak</a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuStatus">
+                                                @foreach ($stat as $status)
+                                                <a class="dropdown-item status-item" href="#" data-status="{{ $status->nama }}">{{ $status->nama }}</a>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -64,13 +63,14 @@
                                     <div class="btn-group mb-1">
                                         <div class="dropdown">
                                             <button class="btn btn-outline-danger dropdown-toggle me-1" type="button"
-                                                id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                id="dropdownMenuAksi" data-bs-toggle="dropdown" aria-haspopup="true"
                                                 aria-expanded="false">
-                                                Aksi
+                                                <span id="selectedAksi">Aksi</span>
                                             </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
-                                                <a class="dropdown-item" href="#">Diproses</a>
-                                                <a class="dropdown-item" href="#">Selesai</a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuAksi">
+                                                @foreach ($paksi as $pilaksi)
+                                                <a class="dropdown-item aksi-item" href="#" data-aksi="{{ $pilaksi->nama_aksi }}">{{ $pilaksi->nama_aksi }}</a>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -110,35 +110,31 @@
     $('#table').dataTable()
 </script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const dropdownItems = document.querySelectorAll('.status-item');
-        const konfirmasiModal = new bootstrap.Modal(document.getElementById('konfirmasiModal'));
-        const konfirmasiButton = document.getElementById('konfirmasiButton');
-        let selectedStatus = '';
-
-        dropdownItems.forEach(item => {
-            item.addEventListener('click', function (event) {
-                event.preventDefault();
-                selectedStatus = item.getAttribute('data-status');
-                konfirmasiModal.show();
-            });
+    // Menangani peristiwa saat item petugas dipilih
+    var petugasItem = document.querySelectorAll('.petugas-item');
+    petugasItem.forEach(function(item) {
+        item.addEventListener('click', function() {
+            var selectedPetugas = item.getAttribute('data-petugas');
+            document.getElementById('selectedPetugas').textContent = selectedPetugas;
         });
+    });
 
-        konfirmasiButton.addEventListener('click', function () {
-            if (selectedStatus !== '') {
-                axios.post('/simpan-status', {
-                    status: selectedStatus
-                })
-                .then(response => {
-                    konfirmasiModal.hide();
-                    selectedStatus = '';
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-            }
+    // Menangani peristiwa saat item status dipilih
+    var statusItems = document.querySelectorAll('.status-item');
+    statusItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            var selectedStatus = item.getAttribute('data-status');
+            document.getElementById('selectedStatus').textContent = selectedStatus;
+        });
+    });
+
+    // Menangani peristiwa saat item aksi dipilih
+    var aksiItems = document.querySelectorAll('.aksi-item');
+    aksiItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            var selectedAksi = item.getAttribute('data-aksi');
+            document.getElementById('selectedAksi').textContent = selectedAksi;
         });
     });
 </script>
-
 @endsection

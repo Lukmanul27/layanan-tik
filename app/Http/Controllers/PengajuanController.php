@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\PelayananInput;
+use App\Models\PengajuanAksi;
+use App\Models\PengajuanStat;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -18,15 +20,9 @@ class PengajuanController extends Controller
             'pengajuan'=>PelayananInput::get(),
             'user'=>User::get(),
             'petugasUsers'=>Role::where('name', 'Petugas')->firstOrFail()->users,
+            'stat'=>PengajuanStat::get(),
+            'paksi'=>PengajuanAksi::get(),
         ]);
-    }
-    public function simpanStatus(Request $request)
-    {
-        $status = $request->input('status');
-
-        PelayananInput::create(['status' => $status]);
-
-        return redirect()->route('pengajuan.index')->with('success', 'Pelayanan delete successfully');
     }
 
     public function dashboard()
@@ -47,11 +43,7 @@ class PengajuanController extends Controller
      */
     public function store(Request $request)
     {
-        $status = $request->input('status');
-
-        PelayananInput::create(['status' => $status]);
-
-        return redirect()->route('pengajuan.index')->with('success', 'Pelayanan delete successfully');
+//
     }
 
     /**

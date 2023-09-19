@@ -13,16 +13,16 @@ class UserSeeder extends Seeder
     {
         // Membuat pengguna dengan peran "superadmin"
 $adminUser = User::create([
-    'name' => 'Superadmin Name',
-    'email' => 'superadmin@example.com',
+    'name' => 'Aku Admin',
+    'email' => 'admin@garutkab.go.id',
     'password' => bcrypt('password'),
 ]);
 $adminUser->assignRole('admin');
 
 // Membuat pengguna dengan peran "petugas"
 $petugasUser = User::create([
-    'name' => 'Petugas Name',
-    'email' => 'petugas@example.com',
+    'name' => 'Aku Petugas',
+    'email' => 'petugas@garutkab.go.id',
     'password' => bcrypt('password'),
 ]);
 $petugasUser->assignRole('petugas');

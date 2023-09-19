@@ -17,22 +17,17 @@
                     <div class="scrollable-content">
                         <table class="table" id="table">
                             <thead>
-                                <th>#</th>
+                                <th></th>
                                 <th>Nama</th>
                                 <th>Deskripsi</th>
-                                <th>Data</th>
                                 <th>Aksi</th>
                             </thead>
                             <tbody>
                                 @foreach ($pelayanan as $item)
                                 <tr>
-                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$loop->iteration}}.</td>
                                     <td>{{$item->nama}}</td>
                                     <td>{{$item->deskripsi}}</td>
-                                    <td>
-                                        <a href="{{route('pelayanan.show',$item->id)}}"
-                                            class="badge bg-success">input</a>
-                                    </td>
                                     <td>
                                         <a href="{{route('pelayanan.edit',$item->id)}}"
                                             class="badge bg-warning">Edit</a>
