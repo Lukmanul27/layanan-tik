@@ -21,55 +21,57 @@
                             <th>Aksi</th>
                         </thead>
                         <tbody>
-                            @foreach($pengajuan as $data)
+                            @foreach($pengajuan->sortByDesc('updated_at') as $data)
                             <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{ $data->user_id }}</td>
-                                <td>{{ $data->pelayanan_id }}</td>
-                                <td>{{ $data->updated_at }}</td>
+                                <td>{{$loop->iteration}}.</td>
                                 <td>
-                                    <div class="btn-group dropdown me-1 mb-1">
-                                        <button type="button" class="btn btn-success">Petugas</button>
-                                        <button type="button"
-                                            class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                            data-reference="parent">
-                                            <span class="sr-only">Petugas</span>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Option 1</a>
-                                            <a class="dropdown-item" href="#">Option 2</a>
-                                            <a class="dropdown-item" href="#">Option 3</a>
+                                    {{ \App\Models\User::find($data->user_id)->name }}
+                                </td>
+                                <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
+                                <td>{{ $data->updated_at->format('Y-m-d') }}</td>
+                                <td>
+                                    <div class="btn-group mb-1">
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-success dropdown-toggle me-1" type="button"
+                                                id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                Petugas
+                                            </button>
+                                            @foreach ($petugasUsers as $petugas)
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
+                                                <a class="dropdown-item" href="#">{{ $petugas->nama }}</a>
+                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="btn-group dropdown me-1 mb-1">
-                                        <button type="button" class="btn btn-secondary">Status</button>
-                                        <button type="button"
-                                            class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                            data-reference="parent">
-                                            <span class="sr-only">Status</span>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Selesai</a>
-                                            <a class="dropdown-item" href="#">Proses</a>
+                                    <div class="btn-group mb-1">
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-info dropdown-toggle me-1" type="button"
+                                                id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                Status
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
+                                                <a class="dropdown-item status-item" href="#" data-status="ACC">Diterima</a>
+                                                <a class="dropdown-item status-item" href="#" data-status="DITOLAK">Ditolak</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="btn-group dropdown me-1 mb-1">
-                                        <button type="button" class="btn btn-info">Aksi</button>
-                                        <button type="button"
-                                            class="btn btn-outline-info dropdown-toggle dropdown-toggle-split"
-                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                            data-reference="parent">
-                                            <span class="sr-only">Status</span>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Terima</a>
-                                            <a class="dropdown-item" href="#">Tolak</a>
+                                    <div class="btn-group mb-1">
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-danger dropdown-toggle me-1" type="button"
+                                                id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                Aksi
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
+                                                <a class="dropdown-item" href="#">Diproses</a>
+                                                <a class="dropdown-item" href="#">Selesai</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
@@ -82,13 +84,61 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary" id="konfirmasiButton">Konfirmasi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 <script>
     $('#table').dataTable()
-
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropdownItems = document.querySelectorAll('.status-item');
+        const konfirmasiModal = new bootstrap.Modal(document.getElementById('konfirmasiModal'));
+        const konfirmasiButton = document.getElementById('konfirmasiButton');
+        let selectedStatus = '';
 
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', function (event) {
+                event.preventDefault();
+                selectedStatus = item.getAttribute('data-status');
+                konfirmasiModal.show();
+            });
+        });
+
+        konfirmasiButton.addEventListener('click', function () {
+            if (selectedStatus !== '') {
+                axios.post('/simpan-status', {
+                    status: selectedStatus
+                })
+                .then(response => {
+                    konfirmasiModal.hide();
+                    selectedStatus = '';
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+            }
+        });
+    });
+</script>
 
 @endsection

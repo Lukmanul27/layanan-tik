@@ -49,3 +49,4 @@ Route::resource('/pengajuan_in', IsianlayananController::class);
 Route::post('/pengajuan_in', [IsianlayananController::class, 'store'])->name('Isianlayanan.store');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/tracking', TrackingController::class);
+Route::post('/simpan-status', [PengajuanController::class, 'simpanStatus']);
