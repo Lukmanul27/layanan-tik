@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PelayananInput;
 use Illuminate\Http\Request;
 
 class PengajuanController extends Controller
@@ -11,7 +12,9 @@ class PengajuanController extends Controller
      */
     public function index()
     {
-        return view('pengajuan.index');
+        return view('pengajuan.index',[
+            'pengajuan'=>PelayananInput::get(),
+        ]);
     }
 
     public function dashboard()

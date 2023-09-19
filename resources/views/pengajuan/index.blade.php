@@ -21,49 +21,60 @@
                             <th>Aksi</th>
                         </thead>
                         <tbody>
+                            @foreach($pengajuan as $data)
                             <tr>
-                                <td>1</td>
-                                <td>Nama SKPD</td>
-                                <td>Jenis Layanan</td>
-                                <td>Tanggal Pengajuan</td>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{ $data->user_id }}</td>
+                                <td>{{ $data->pelayanan_id }}</td>
+                                <td>{{ $data->updated_at }}</td>
                                 <td>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                            List Petugas
+                                    <div class="btn-group dropdown me-1 mb-1">
+                                        <button type="button" class="btn btn-success">Petugas</button>
+                                        <button type="button"
+                                            class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                            data-reference="parent">
+                                            <span class="sr-only">Petugas</span>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">A</a>
-                                            <a class="dropdown-item" href="#">B</a>
-                                            <a class="dropdown-item" href="#">C</a>
+                                            <a class="dropdown-item" href="#">Option 1</a>
+                                            <a class="dropdown-item" href="#">Option 2</a>
+                                            <a class="dropdown-item" href="#">Option 3</a>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                            Status
+                                    <div class="btn-group dropdown me-1 mb-1">
+                                        <button type="button" class="btn btn-secondary">Status</button>
+                                        <button type="button"
+                                            class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                            data-reference="parent">
+                                            <span class="sr-only">Status</span>
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="#">Selesai</a>
-                                            <a class="dropdown-item" href="#">Diproses</a>
+                                            <a class="dropdown-item" href="#">Proses</a>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                            Aksi
+                                    <div class="btn-group dropdown me-1 mb-1">
+                                        <button type="button" class="btn btn-info">Aksi</button>
+                                        <button type="button"
+                                            class="btn btn-outline-info dropdown-toggle dropdown-toggle-split"
+                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                            data-reference="parent">
+                                            <span class="sr-only">Status</span>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">ACC</a>
+                                            <a class="dropdown-item" href="#">Terima</a>
                                             <a class="dropdown-item" href="#">Tolak</a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

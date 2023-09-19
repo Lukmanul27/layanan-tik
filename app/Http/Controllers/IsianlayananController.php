@@ -31,11 +31,16 @@ class IsianlayananController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-     {
-         PelayananInput::create($request->all());
+    {
+        // return $request->pelayanan_id;
 
-         return redirect()->route('pelayanan.index')->with('success', 'Pelayanan Berhasil Diajukan');
-     }
+        PelayananInput::create([
+            'pelayanan_id'=>$request->pelayanan_id,
+            'data'=> json_encode($request -> except('_token', 'pelayanan_id')),
+            'user_id'=>auth()->user()->id,
+        ]);
+        return redirect()->route('skpd.index')->with('success', 'Pelayanan Berhasil Diajukan');
+    }
 
     /**
      * Display the specified resource.

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pelayanan;
+use App\Models\PelayananInput;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -15,14 +16,14 @@ class AdminController extends Controller {
     function index() {
         $totalUsers = User::count();
         $totalRole         = Role::count();
-        // $totalPermintaan = Permintaan::count();
+        $totalPermintaan = PelayananInput::count();
         $totalLayanan = Pelayanan::count();
 
         $pelayanan = Pelayanan::get();
         $akun         = User::get();
         $role         = Role::get();
 
-        return view('admin.index', compact('totalUsers', 'totalLayanan', 'pelayanan', 'akun', 'totalRole', 'role'));
+        return view('admin.index', compact('totalUsers', 'totalLayanan', 'totalPermintaan', 'pelayanan', 'akun', 'totalRole', 'role'));
     }
     /**
      * Show the form for creating a new resource.

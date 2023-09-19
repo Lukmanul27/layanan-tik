@@ -38,7 +38,7 @@
     <header id="header" class="header d-flex align-items-center">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
             <div class="logo d-flex align-items-center">
-                <h1 style="font-size: 36px; font-weight: normal;">LAYANAN<span style="font-size: 68px; font-weight: bold;">TIK</span></h1>
+                <h1 style="font-size: 36px; font-weight: normal;">PE<span style="font-size: 68px; font-weight: bold;">TIK</span></h1>
             </div>
             <nav id="navbar" class="navbar">
                 <ul>

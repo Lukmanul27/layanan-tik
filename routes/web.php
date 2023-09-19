@@ -9,6 +9,7 @@ use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PengajuanInController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\UserPelayananController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -43,6 +44,8 @@ Route::group(["middleware" => ['role:petugas']], function () {
 });
 
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/skpd', [HomeController::class, 'index'])->name('skpd.index');
 Route::resource('/pengajuan_in', IsianlayananController::class);
-Route::post('pengajuan_in', 'PengajuanInController@store')->name('pengajuan_in.store');
+Route::post('/pengajuan_in', [IsianlayananController::class, 'store'])->name('Isianlayanan.store');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('/tracking', TrackingController::class);

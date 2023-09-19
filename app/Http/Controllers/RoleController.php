@@ -45,7 +45,7 @@ class RoleController extends Controller
 
         $role = new Role([
             'name' => $data['name'],
-            'guard_name' => 'web', // Ganti dengan nama guard yang sesuai
+            'guard_name' => 'web',
         ]);
 
         $role->save();
