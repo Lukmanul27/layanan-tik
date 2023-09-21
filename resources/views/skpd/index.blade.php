@@ -48,7 +48,7 @@
                     <th>Proses</th>
                 </thead>
                 <tbody>
-                    @foreach($pengajuan->sortByDesc('updated_at') as $data)
+                    @foreach($pengajuan->where('user_id', auth()->user()->id)->sortByDesc('updated_at') as $data)
                     <tr>
                         <td>{{$loop->iteration}}.</td>
                         <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
