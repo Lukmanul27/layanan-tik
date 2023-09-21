@@ -41,6 +41,7 @@ Route::group(["middleware" => ['role:admin']], function () {
 
 Route::group(["middleware" => ['role:petugas']], function () {
     Route::resource('/petugas', PetugasController::class);
+    Route::get('/layanan', [PetugasController::class, 'layananmasuk'])->name('petugas.layananmasuk');
 });
 
 Route::get('/home', [HomeController::class, 'index']);

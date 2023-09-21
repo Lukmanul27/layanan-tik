@@ -1,4 +1,4 @@
-@extends('layouts.admin_pages')
+@extends('layouts.petugas_pages')
 
 @section('content')
 
@@ -17,27 +17,22 @@
                             <th>Nama Layanan</th>
                             <th>Tanggal</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>Progres</th>
                         </thead>
                         <tbody>
                             @foreach($pengajuan->sortByDesc('updated_at') as $data)
+                            @if($data->status == 'diterima')
                             <tr>
                                 <td>{{$loop->iteration}}.</td>
                                 <td>
                                     {{ \App\Models\User::find($data->user_id)->name }}
                                 </td>
                                 <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
-                                <td>{{ $data->updated_at->format('d-m-Y') }}</td>
+                                <td>{{ $data->updated_at->format('Y-m-d') }}</td>
                                 <td>{{ $data->status }}</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-outline-primary rounded-pill btn-sm"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-                                            Detail
-                                        </button>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -62,7 +57,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Pada Tanggal {{ $data->updated_at->format('d-m-Y') }},
+                        <p>Pada Tanggal {{ $data->updated_at->format('Y-m-d') }},
                             {{ \App\Models\User::find($data->user_id)->name }} Telah Mengajukan Perimintaan Layanan
                             {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}, Dengan Detail Sebagai Berikut
                         </p>

@@ -18,7 +18,6 @@
             </div>
         </li>
     </div>
-
     <div class="page-content">
         <section class="row">
             <div class="col-12 col-lg-9">
@@ -64,7 +63,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <section class="section">
                         <div class="col-12">
@@ -84,7 +82,19 @@
                                                     <th>Tanggal</th>
                                                 </thead>
                                                 <tbody>
-                                                    <!-- Isi tabel Pelayanan Masuk di sini -->
+                                                    @foreach($pengajuan->sortByDesc('updated_at') as $data)
+                                                    @if($data->status == 'diterima')
+                                                    <tr>
+                                                        <td>{{$loop->iteration}}.</td>
+                                                        <td>
+                                                            {{ \App\Models\User::find($data->user_id)->name }}
+                                                        </td>
+                                                        <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}
+                                                        </td>
+                                                        <td>{{ $data->updated_at->format('Y-m-d') }}</td>
+                                                    </tr>
+                                                    @endif
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

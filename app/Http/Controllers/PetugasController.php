@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pelayanan;
+use App\Models\PelayananInput;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -13,15 +14,20 @@ class PetugasController extends Controller {
      */
     public
     function index() {
-        // $totalPermintaan = Permintaan::count();
-        $totalLayanan = Pelayanan::count();
-        $pelayanan = Pelayanan::get();
-
-        return view('petugas.index', compact('totalLayanan', 'pelayanan'));
+        return view('petugas.index', [
+            'pengajuan' => PelayananInput::get(),
+            'totalLayanan' => Pelayanan::count(),
+            'pelayanan' => Pelayanan::get(),
+        ]);
     }
-
-
-
+    public function layananmasuk()
+    {
+        return view('petugas.layananmasuk',[
+            'pengajuan'=>PelayananInput::get(),
+            'user'=>User::get(),
+            'petugasUsers'=>Role::where('name', 'Petugas')->firstOrFail()->users,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */

@@ -45,7 +45,7 @@
                     <th>Nama Layanan</th>
                     <th>Tanggal</th>
                     <th>Status</th>
-                    <th>Proses</th>
+                    <th>Progres</th>
                 </thead>
                 <tbody>
                     @foreach($pengajuan->where('user_id', auth()->user()->id)->sortByDesc('updated_at') as $data)
