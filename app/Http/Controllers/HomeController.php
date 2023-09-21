@@ -35,8 +35,6 @@ class HomeController extends Controller
             'pengajuan'=>PelayananInput::get(),
             'user'=>User::get(),
             'petugasUsers'=>Role::where('name', 'Petugas')->firstOrFail()->users,
-            'stat'=>PengajuanStat::get(),
-            'paksi'=>PengajuanAksi::get(),
         ]);
     }
 }

@@ -50,10 +50,10 @@
                 <tbody>
                     @foreach($pengajuan->sortByDesc('updated_at') as $data)
                     <tr>
-                        <td>1</td>
-                        <td>Nama</td>
+                        <td>{{$loop->iteration}}.</td>
+                        <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
                         <td>{{ $data->updated_at->format('Y-m-d') }}</td>
-                        <td>status</td>
+                        <td>{{ $data->status }}</td>
                         <td>Proses</td>
                     </tr>
                     @endforeach

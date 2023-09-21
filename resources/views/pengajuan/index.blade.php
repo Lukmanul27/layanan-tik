@@ -17,7 +17,6 @@
                             <th>Nama Layanan</th>
                             <th>Tanggal</th>
                             <th>Status</th>
-                            <th>Aksi</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -30,20 +29,6 @@
                                 <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
                                 <td>{{ $data->updated_at->format('Y-m-d') }}</td>
                                 <td>{{ $data->status }}</td>
-                                <td>
-                                    <div class="btn-group mb-1">
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-outline-danger dropdown-toggle me-1 rounded-pill btn-sm"
-                                                type="button" id="dropdownMenuAksi" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <span id="selectedAksi">Aksi</span>
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuAksi">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button type="button" class="btn btn-outline-primary rounded-pill btn-sm"
