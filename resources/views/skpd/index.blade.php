@@ -42,21 +42,21 @@
             <table class="table" data-aos="fade-down">
                 <thead>
                     <th></th>
-                    <th>Nama</th>
                     <th>Nama Layanan</th>
                     <th>Tanggal</th>
                     <th>Status</th>
-                    <th>Aksi</th>
+                    <th>Proses</th>
                 </thead>
                 <tbody>
+                    @foreach($pengajuan->sortByDesc('updated_at') as $data)
                     <tr>
                         <td>1</td>
                         <td>Nama</td>
-                        <td>Layanan</td>
-                        <td>Tanggal</td>
-                        <td>Status</td>
-                        <td>Aksi</td>
+                        <td>{{ $data->updated_at->format('Y-m-d') }}</td>
+                        <td>status</td>
+                        <td>Proses</td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

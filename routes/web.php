@@ -6,15 +6,12 @@ use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AwalController;
 use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\PengajuanController;
-use App\Http\Controllers\PengajuanInController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TrackingController;
-use App\Http\Controllers\UserPelayananController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IsianlayananController;
-use App\Http\Controllers\SkpdController;
 
 /*
 |--------------------------------------------------------------------------
