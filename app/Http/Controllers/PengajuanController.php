@@ -20,7 +20,6 @@ class PengajuanController extends Controller
             'pengajuan'=>PelayananInput::get(),
             'user'=>User::get(),
             'petugasUsers'=>Role::where('name', 'Petugas')->firstOrFail()->users,
-            'paksi'=>PengajuanAksi::get(),
         ]);
     }
 
@@ -71,7 +70,11 @@ class PengajuanController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('pengajuan.show',[
+            'pengajuan'=>PelayananInput::get(),
+            'user'=>User::get(),
+            'petugasUsers'=>Role::where('name', 'Petugas')->firstOrFail()->users,
+        ]);
     }
 
     /**

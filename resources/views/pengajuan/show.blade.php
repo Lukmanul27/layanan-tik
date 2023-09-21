@@ -29,7 +29,22 @@
                                 </td>
                                 <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
                                 <td>{{ $data->updated_at->format('Y-m-d') }}</td>
-                                <td>{{ $data->status }}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <form action="{{ route('approve', $data->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-outline-success rounded-pill btn-sm"><i
+                                                    class="bi bi-check2-circle"></i>
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('disapprove', $data->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-outline-danger rounded-pill btn-sm"><i
+                                                    class="bi bi-x-circle"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
                                 <td>
                                     <div class="btn-group mb-1">
                                         <div class="dropdown">
@@ -46,56 +61,19 @@
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-outline-primary rounded-pill btn-sm"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                        <button class="btn btn-outline-info rounded-pill btn-sm"
+                                            style="margin-right: 5px;">
                                             Detail
                                         </button>
-                                        {{-- <a href="{{ route('pengajuan.show', $data->id) }}" class="btn btn-primary
-                                        rounded-fill">Detail</a> --}}
+                                        <button class="btn btn-outline-success rounded-pill btn-sm">
+                                            Konfirmasi
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-6 col-12">
-    <div class="card">
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
-                role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Detail Pelayanan {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}
-                        </h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <i data-feather="x"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Pada Tanggal {{ $data->updated_at->format('Y-m-d') }}, {{ \App\Models\User::find($data->user_id)->name }} Telah Mengajukan Perimintaan Layanan {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}, Dengan Detail Sebagai Berikut</p>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="btn-group" role="group">
-                            <form action="{{ route('approve', $data->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-outline-success rounded-pill btn-sm"><i
-                                        class="bi bi-check2-circle"></i> Terima
-                                </button>
-                            </form>
-                            <form action="{{ route('disapprove', $data->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-outline-danger rounded-pill btn-sm"><i
-                                        class="bi bi-x-circle"></i> Tolak
-                                </button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

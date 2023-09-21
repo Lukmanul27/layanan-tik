@@ -36,7 +36,7 @@ Route::group(["middleware" => ['role:admin']], function () {
     Route::post('role-add',[RoleController::class,'add'])->name('role-add.store');
     Route::post('/approve/{id}', [PengajuanController::class, 'approve'])->name('approve');
     Route::post('/disapprove/{id}', [PengajuanController::class, 'disapprove'])->name('disapprove');
-
+    Route::get('/pengajuan/{id}', [PengajuanControlle::class, 'show'])->name('pengajuan.show');
 });
 
 Route::group(["middleware" => ['role:petugas']], function () {
