@@ -30,26 +30,26 @@
                                 <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
                                 <td>{{ $data->updated_at->format('Y-m-d') }}</td>
                                 <td>
-                                    <div class="btn-group mb-1">
-                                        <div class="dropdown">
-                                            <button class="btn btn-outline-success dropdown-toggle me-1 rounded-pill btn-sm"
-                                                type="button" id="dropdownMenuStatus" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <span id="selectedStatus">Status</span>
+                                    <div class="btn-group" role="group">
+                                        <form action="{{ route('approve', $data->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit"
+                                                class="btn btn-outline-success rounded-pill btn-sm"><i class="bi bi-check2-circle"></i>
                                             </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuStatus">
-                                                @foreach ($stat as $status)
-                                                <a class="dropdown-item status-item" href="#"
-                                                    data-status="{{ $status->nama }}">{{ $status->nama }}</a>
-                                                @endforeach
-                                            </div>
-                                        </div>
+                                        </form>
+                                        <form action="{{ route('disapprove', $data->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit"
+                                                class="btn btn-outline-danger rounded-pill btn-sm"><i class="bi bi-x-circle"></i>
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="btn-group mb-1">
                                         <div class="dropdown">
-                                            <button class="btn btn-outline-danger dropdown-toggle me-1 rounded-pill btn-sm"
+                                            <button
+                                                class="btn btn-outline-danger dropdown-toggle me-1 rounded-pill btn-sm"
                                                 type="button" id="dropdownMenuAksi" data-bs-toggle="dropdown"
                                                 aria-haspopup="true" aria-expanded="false">
                                                 <span id="selectedAksi">Aksi</span>
@@ -88,14 +88,6 @@
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 <script>
     $('#table').dataTable()
-
-    var statusItems = document.querySelectorAll('.status-item');
-    statusItems.forEach(function (item) {
-        item.addEventListener('click', function () {
-            var selectedStatus = item.getAttribute('data-status');
-            document.getElementById('selectedStatus').textContent = selectedStatus;
-        });
-    });
 
     var aksiItems = document.querySelectorAll('.aksi-item');
     aksiItems.forEach(function (item) {

@@ -20,10 +20,30 @@ class PengajuanController extends Controller
             'pengajuan'=>PelayananInput::get(),
             'user'=>User::get(),
             'petugasUsers'=>Role::where('name', 'Petugas')->firstOrFail()->users,
-            'stat'=>PengajuanStat::get(),
             'paksi'=>PengajuanAksi::get(),
         ]);
     }
+
+    public function approve($id)
+    {
+        $pelayananInput = PelayananInput::findOrFail($id);
+        $pelayananInput->update(['approved' => true]);
+
+        $pelayananInput->update(['status' => 'diterima']);
+
+        return redirect()->route('pengajuan.index')->with('success', 'Pelayanan Telah Disetujui');
+    }
+
+    public function disapprove($id)
+    {
+        $pelayananInput = PelayananInput::findOrFail($id);
+    $pelayananInput->update(['approved' => false]);
+
+    $pelayananInput->update(['status' => 'ditolak']);
+
+        return redirect()->route('pengajuan.index')->with('success', 'Pelayanan Telah Ditolak');
+    }
+
 
     public function dashboard()
     {

@@ -34,6 +34,9 @@ Route::group(["middleware" => ['role:admin']], function () {
     Route::resource('/akun', AkunController::class);
     Route::resource('/role', RoleController::class);
     Route::post('role-add',[RoleController::class,'add'])->name('role-add.store');
+    Route::post('/approve/{id}', [PengajuanController::class, 'approve'])->name('approve');
+    Route::post('/disapprove/{id}', [PengajuanController::class, 'disapprove'])->name('disapprove');
+
 });
 
 Route::group(["middleware" => ['role:petugas']], function () {
