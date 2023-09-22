@@ -30,7 +30,34 @@
                                 <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
                                 <td>{{ $data->updated_at->format('Y-m-d') }}</td>
                                 <td>{{ $data->status }}</td>
-                                <td></td>
+                                <td>
+                                    <form action="#"
+                                        method="POST">
+                                        <input type="hidden" name="process_status" value="dalam_antrian">
+                                        <button type="submit" class="btn btn-outline-info rounded-pill btn-sm">
+                                            <i class="bi bi-check2-circle"></i> Dalam Antrian
+                                        </button>
+                                    </form>
+
+                                    <form action="#"
+                                        method="POST">
+                                        @csrf
+                                        <input type="hidden" name="process_status" value="diproses">
+                                        <button type="submit" class="btn btn-outline-danger rounded-pill btn-sm">
+                                            <i class="bi bi-x-circle"></i> Diproses
+                                        </button>
+                                    </form>
+
+                                    <form action="#"
+                                        method="POST">
+                                        @csrf
+                                        <input type="hidden" name="process_status" value="selesai">
+                                        <button type="submit" class="btn btn-outline-success rounded-pill btn-sm">
+                                            <i class="bi bi-check2-all"></i> Selesai
+                                        </button>
+                                    </form>
+
+                                </td>
                             </tr>
                             @endif
                             @endforeach

@@ -32,8 +32,6 @@ class IsianlayananController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->pelayanan_id;
-
         PelayananInput::create([
             'pelayanan_id'=>$request->pelayanan_id,
             'data'=> json_encode($request -> except('_token', 'pelayanan_id')),

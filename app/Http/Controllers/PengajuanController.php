@@ -28,7 +28,6 @@ class PengajuanController extends Controller
     {
         $pelayananInput = PelayananInput::findOrFail($id);
         $pelayananInput->update(['approved' => true]);
-
         $pelayananInput->update(['status' => 'diterima']);
 
         return redirect()->route('pengajuan.index')->with('success', 'Pelayanan Telah Disetujui');
@@ -37,9 +36,8 @@ class PengajuanController extends Controller
     public function disapprove($id)
     {
         $pelayananInput = PelayananInput::findOrFail($id);
-    $pelayananInput->update(['approved' => false]);
-
-    $pelayananInput->update(['status' => 'ditolak']);
+        $pelayananInput->update(['approved' => false]);
+        $pelayananInput->update(['status' => 'ditolak']);
 
         return redirect()->route('pengajuan.index')->with('success', 'Pelayanan Telah Ditolak');
     }

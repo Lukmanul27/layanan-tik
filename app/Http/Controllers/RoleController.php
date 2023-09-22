@@ -28,7 +28,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('role.create');
+        return view('role.create', [
+            'title'=>'RoleUser',
+        ]);
     }
 
     /**
@@ -45,6 +47,7 @@ class RoleController extends Controller
         ]);
 
         $role = new Role([
+            'title'=>'RoleUser',
             'name' => $data['name'],
             'guard_name' => 'web',
         ]);
@@ -66,7 +69,9 @@ class RoleController extends Controller
     {
         $user=User::get();
 
-        return view('role.add', compact('role','user'));
+        return view('role.add', [
+            'title'=>'RoleUser',
+        ], compact('role','user'));
     }
 
     /**
@@ -79,7 +84,9 @@ class RoleController extends Controller
     {
         $role = Role::findOrFail($id);
 
-        return view('role.edit', compact('role'));
+        return view('role.edit', [
+            'title'=>'RoleUser',
+        ], compact('role'));
     }
 
     /**
@@ -95,7 +102,9 @@ class RoleController extends Controller
 
         $role->update($request->all());
 
-        return redirect()->route('role.index')->with('success', 'Role updated successfully');
+        return redirect()->route('role.index', [
+            'title'=>'RoleUser',
+        ])->with('success', 'Role updated successfully');
     }
 
     /**
@@ -110,13 +119,17 @@ class RoleController extends Controller
 
         $role->delete();
 
-        return redirect()->route('role.index')->with('success', 'Role deleted successfully');
+        return redirect()->route('role.index',[
+            'title'=>'RoleUser',
+        ])->with('success', 'Role deleted successfully');
     }
 
     public function add(Request $request)
     {
         $user=User::whereId($request->user_id)->first();
         $user->assignRole($request->name);
-        return redirect()->route('role.index')->with('success', 'user berhasil ditambahkan!');
+        return redirect()->route('role.index', [
+            'title'=>'RoleUser',
+        ])->with('success', 'user berhasil ditambahkan!');
     }
 }

@@ -17,6 +17,7 @@
                             <th>Nama Layanan</th>
                             <th>Tanggal</th>
                             <th>Status</th>
+                            <th>Petugas</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -30,10 +31,26 @@
                                 <td>{{ $data->created_at->format('d-m-Y') }}</td>
                                 <td>{{ $data->status }}</td>
                                 <td>
+                                    <div class="btn-group mb-1 ">
+                                        <div class="dropdown">
+                                            <button class="btn btn-info dropdown-toggle me-1 btn-sm rounded-pill" type="button"
+                                                id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                Petugas
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
+                                                <a class="dropdown-item" href="#">Option 1</a>
+                                                <a class="dropdown-item" href="#">Option 2</a>
+                                                <a class="dropdown-item" href="#">Option 3</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
                                     <div class="btn-group" role="group">
                                         <button type="button" class="btn btn-outline-primary rounded-pill btn-sm"
                                             data-bs-toggle="modal" data-bs-target="#modal-{{ $data->id }}">
-                                            Detail
+                                            <i class="bi bi-eye-fill"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -50,28 +67,36 @@
 @foreach($pengajuan->sortByDesc('created_at') as $data)
 <div class="col-md-6 col-12">
     <div class="card">
-        <div class="modal fade" id="modal-{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal fade" id="modal-{{ $data->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+                role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Detail Pelayanan {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Detail Pelayanan
+                            {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Pada Tanggal {{ $data->created_at->format('d-m-Y') }}, {{ \App\Models\User::find($data->user_id)->name }} Telah Mengajukan Permintaan Layanan {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}, Dengan Detail Sebagai Berikut</p>
-                        <!-- Tambahkan detail pengajuan lainnya sesuai kebutuhan -->
+                        <p>Pada Tanggal {{ $data->created_at->format('d-m-Y') }},
+                            {{ \App\Models\User::find($data->user_id)->name }} Telah Mengajukan Permintaan Layanan
+                            {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}, Dengan Detail Sebagai Berikut
+                        </p>
+                        <div id="form-input">{{ $data->data }}</div>
                     </div>
                     <div class="modal-footer">
                         <div class="btn-group" role="group">
                             <form action="{{ route('approve', $data->id) }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-outline-success rounded-pill btn-sm"><i class="bi bi-check2-circle"></i> Terima</button>
+                                <button type="submit" class="btn btn-outline-success rounded-pill btn-sm"><i
+                                        class="bi bi-check2-circle"></i> Terima</button>
                             </form>
                             <form action="{{ route('disapprove', $data->id) }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-outline-danger rounded-pill btn-sm"><i class="bi bi-x-circle"></i> Tolak</button>
+                                <button type="submit" class="btn btn-outline-danger rounded-pill btn-sm"><i
+                                        class="bi bi-x-circle"></i> Tolak</button>
                             </form>
                         </div>
                     </div>
@@ -84,8 +109,20 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://formbuilder.online/assets/js/form-render.min.js"></script>
 <script>
     $('#table').dataTable()
+
+    var formData = JSON.parse({
+        !!json_encode($data - > data) !!
+    });
+
+    var formRenderOpts = {
+        formData,
+        dataType: 'json'
+    };
+    $("#form-input").formRender(formRenderOpts);
 
 </script>
 @endsection
