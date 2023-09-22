@@ -11,6 +11,7 @@ class AkunController extends Controller
     {
         // return Pelayanan::get();
         return view('akun.index', [
+            'title'=>'Akun',
             'akun' => User::get()
         ]);
     }

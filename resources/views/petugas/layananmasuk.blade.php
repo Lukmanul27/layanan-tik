@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">List Pengajuan Masuk</h1>
+        <h1 class="h3 mb-0 text-gray-800">List {{ $title }}</h1>
     </div>
     <div class="card border-left-primary shadow h-100 py-2">
         <div class="card-body">
@@ -41,48 +41,7 @@
         </div>
     </div>
 </div>
-<div class="col-md-6 col-12">
-    <div class="card">
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
-                role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Detail Pelayanan
-                            {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}
-                        </h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <i data-feather="x"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Pada Tanggal {{ $data->updated_at->format('Y-m-d') }},
-                            {{ \App\Models\User::find($data->user_id)->name }} Telah Mengajukan Perimintaan Layanan
-                            {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}, Dengan Detail Sebagai Berikut
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="btn-group" role="group">
-                            <form action="{{ route('approve', $data->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-outline-success rounded-pill btn-sm"><i
-                                        class="bi bi-check2-circle"></i> Terima
-                                </button>
-                            </form>
-                            <form action="{{ route('disapprove', $data->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-outline-danger rounded-pill btn-sm"><i
-                                        class="bi bi-x-circle"></i> Tolak
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>

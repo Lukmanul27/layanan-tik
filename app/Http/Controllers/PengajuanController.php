@@ -17,6 +17,7 @@ class PengajuanController extends Controller
     public function index()
     {
         return view('pengajuan.index',[
+            'title'=>'Pengajuan',
             'pengajuan'=>PelayananInput::get(),
             'user'=>User::get(),
             'petugasUsers'=>Role::where('name', 'Petugas')->firstOrFail()->users,

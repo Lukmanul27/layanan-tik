@@ -16,12 +16,15 @@ class PelayananController extends Controller
     {
         // return Pelayanan::get();
         return view('pelayanan.index', [
+            'title'=>'Pelayanan',
             'pelayanan' => Pelayanan::get()
         ]);
     }
     public function create()
     {
-        return view('pelayanan.create');
+        return view('pelayanan.create', [
+            'title'=>'PelayananCreate',
+        ]);
     }
 
     /**

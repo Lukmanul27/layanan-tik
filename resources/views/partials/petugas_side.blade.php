@@ -20,7 +20,7 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item active">
+                <li class="sidebar-item {{ ($title === 'Dashboard') ? 'active' : '' }}">
                     <a href="{{ route('petugas.index') }}" class="sidebar-link">
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
@@ -29,7 +29,7 @@
 
                 <li class="sidebar-title">Pelayanan</li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{ ($title === 'Permintaan Layanan') ? 'active' : '' }}">
                     <a href="{{ route('petugas.layananmasuk') }}" class="sidebar-link">
                         <i class="bi bi-file-earmark-medical-fill"></i>
                         <span>Layanan Masuk</span>

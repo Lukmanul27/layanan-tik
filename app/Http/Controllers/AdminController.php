@@ -14,24 +14,26 @@ class AdminController extends Controller {
      */
     public
     function index() {
-        $totalUsers = User::count();
-        $totalRole         = Role::count();
-        $totalPermintaan = PelayananInput::count();
-        $totalLayanan = Pelayanan::count();
-
-        $pelayanan = Pelayanan::get();
-        $akun         = User::get();
-        $role         = Role::get();
-
-        return view('admin.index', compact('totalUsers', 'totalLayanan', 'totalPermintaan', 'pelayanan', 'akun', 'totalRole', 'role'));
+        return view('admin.index', [
+            'title'=>'Dashboard',
+            'totalUsers'=>User::count(),
+            'totalLayanan'=>Pelayanan::count(),
+            'totalPermintaan'=>PelayananInput::count(),
+            'pelayanan'=>Pelayanan::get(),
+            'akun'=>User::get(),
+            'role'=>Role::get(),
+            'totalRole'=>Role::count(),
+        ]);
     }
     /**
      * Show the form for creating a new resource.
      */
     public
     function create() {
-        $roles = Role::all();
-        return view('admin.create', compact('roles'));
+        return view('admin.create', [
+            'title'=>'Role',
+            'roles'=>Role::all(),
+        ]);
     }
 
     /**

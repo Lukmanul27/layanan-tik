@@ -3,7 +3,7 @@
 @section('content')
 <div class="page-heading">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h4>Dashboard</h4>
+        <h4>{{ $title }}</h4>
         <li class="card">
             <div class="card-body px-4 py-3">
                 <div class="d-flex align-items-center flex-column">

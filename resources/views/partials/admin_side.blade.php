@@ -20,7 +20,7 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item active">
+                <li class="sidebar-item {{ ($title === 'Dashboard') ? 'active' : '' }}">
                     <a href="{{ route('admin.index') }}" class="sidebar-link">
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
@@ -29,21 +29,21 @@
 
                 <li class="sidebar-title">Pelayanan</li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{ ($title === 'Pelayanan') ? 'active' : '' }}">
                     <a href="{{ route('pelayanan.index') }}" class="sidebar-link">
                         <i class="bi bi-file-earmark-medical-fill"></i>
                         <span>Daftar Pelayanan</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{ ($title === 'PelayananCreate') ? 'active' : '' }}">
                     <a href="{{ route('pelayanan.create') }}" class="sidebar-link">
                         <i class="bi bi-bricks"></i>
                         <span>Buat Form</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{ ($title === 'Pengajuan') ? 'active' : '' }}">
                     <a href="{{ route('pengajuan.index') }}" class="sidebar-link">
                         <i class="bi bi-card-checklist"></i>
                         <span>Daftar Pengajuan</span>
@@ -52,21 +52,21 @@
 
                 <li class="sidebar-title">Pages</li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{ ($title === 'Akun') ? 'active' : '' }}">
                     <a href="{{ route('akun.index') }}" class="sidebar-link">
                         <i class="bi bi-person-circle"></i>
                         <span>Daftar User</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{ ($title === 'Role') ? 'active' : '' }}">
                     <a href="{{ route('admin.create') }}" class="sidebar-link">
                         <i class="bi bi-person-plus-fill"></i>
                         <span>Tambah User</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{ ($title === 'RolePage') ? 'active' : '' }}">
                     <a href="{{ route('role.index') }}" class="sidebar-link">
                         <i class="bi bi-node-plus"></i>
                         <span>Role User</span>
