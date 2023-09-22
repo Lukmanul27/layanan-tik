@@ -1,10 +1,56 @@
 @extends('layouts.admin_pages')
 
 @section('content')
-
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">List Pengajuan Masuk</h1>
+    </div>
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <table class="table" id="table">
+                        <thead>
+                            <th></th>
+                            <th>Nama</th>
+                            <th>Nama Layanan</th>
+                            <th>Tanggal</th>
+                            <th>Status</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            @foreach($pengajuan->sortByDesc('created_at') as $data)
+                            @if($data->status == "Pengajuan")
+                            <tr>
+                                <td>{{$loop->iteration}}.</td>
+                                <td>
+                                    {{ \App\Models\User::find($data->user_id)->name }}
+                                </td>
+                                <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
+                                <td>{{ $data->created_at->format('d-m-Y') }}</td>
+                                <td>{{ $data->status }}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-outline-primary rounded-pill btn-sm"
+                                            data-bs-toggle="modal" data-bs-target="#modal-{{ $data->id }}">
+                                            <i class="bi bi-eye-fill"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- Diterima --}}
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">List Pengajuan Diterima</h1>
     </div>
     <div class="card border-left-primary shadow h-100 py-2">
         <div class="card-body">
@@ -21,7 +67,7 @@
                             <th></th>
                         </thead>
                         <tbody>
-                            @foreach($pengajuan->sortByDesc('created_at') as $data)
+                            @foreach($pengajuan->where('status', 'Diterima')->sortByDesc('created_at') as $data)
                             <tr>
                                 <td>{{$loop->iteration}}.</td>
                                 <td>
@@ -33,9 +79,9 @@
                                 <td>
                                     <div class="btn-group mb-1 ">
                                         <div class="dropdown">
-                                            <button class="btn btn-info dropdown-toggle me-1 btn-sm rounded-pill" type="button"
-                                                id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
+                                            <button class="btn btn-info dropdown-toggle me-1 btn-sm rounded-pill"
+                                                type="button" id="dropdownMenuButton5" data-bs-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
                                                 Petugas
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
@@ -63,7 +109,52 @@
         </div>
     </div>
 </div>
+{{-- Dirolak --}}
 
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">List Pengajuan Ditolak</h1>
+    </div>
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <table class="table" id="table">
+                        <thead>
+                            <th>#</th>
+                            <th>Nama</th>
+                            <th>Nama Layanan</th>
+                            <th>Tanggal</th>
+                            <th>Status</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            @foreach($pengajuan->where('status', 'Ditolak')->sortByDesc('created_at') as $data)
+                            <tr>
+                                <td>{{$loop->iteration}}.</td>
+                                <td>
+                                    {{ \App\Models\User::find($data->user_id)->name }}
+                                </td>
+                                <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
+                                <td>{{ $data->created_at->format('d-m-Y') }}</td>
+                                <td>{{ $data->status }}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-outline-primary rounded-pill btn-sm"
+                                            data-bs-toggle="modal" data-bs-target="#modal-{{ $data->id }}">
+                                            <i class="bi bi-eye-fill"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @foreach($pengajuan->sortByDesc('created_at') as $data)
 <div class="col-md-6 col-12">
     <div class="card">
@@ -82,7 +173,8 @@
                     <div class="modal-body">
                         <p>Pada Tanggal {{ $data->created_at->format('d-m-Y') }},
                             {{ \App\Models\User::find($data->user_id)->name }} Telah Mengajukan Permintaan Layanan
-                            {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}, Dengan Detail Sebagai Berikut
+                            {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}, Dengan Detail Sebagai
+                            Berikut
                         </p>
                         <div id="form-input">{{ $data->data }}</div>
                     </div>
@@ -104,25 +196,24 @@
             </div>
         </div>
     </div>
-</div>
-@endforeach
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://formbuilder.online/assets/js/form-render.min.js"></script>
-<script>
-    $('#table').dataTable()
+    @endforeach
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://formbuilder.online/assets/js/form-render.min.js"></script>
+    <script>
+        $('#table').dataTable()
 
-    var formData = JSON.parse({
-        !!json_encode($data - > data) !!
-    });
+        var formData = JSON.parse({
+            !!json_encode($data - > data) !!
+        });
 
-    var formRenderOpts = {
-        formData,
-        dataType: 'json'
-    };
-    $("#form-input").formRender(formRenderOpts);
+        var formRenderOpts = {
+            formData,
+            dataType: 'json'
+        };
+        $("#form-input").formRender(formRenderOpts);
 
-</script>
-@endsection
+    </script>
+    @endsection
