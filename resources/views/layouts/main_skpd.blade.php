@@ -40,13 +40,10 @@
 </head>
 
 <body>
+    @include('partials.navbar')
 
-    <!-- ======= Header ======= -->
-    @include('layouts.navbar')
-    <!-- End Header -->
-
-    <!-- ======= Hero Section ======= -->
     @include('partials.dbh')
+    <main id="main">
     @include('partials.about')
 
     <main class="py-4">
