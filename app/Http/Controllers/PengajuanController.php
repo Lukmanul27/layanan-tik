@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\PelayananInput;
-use App\Models\PengajuanAksi;
-use App\Models\PengajuanStat;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -27,15 +25,20 @@ class PengajuanController extends Controller
     public function approve($id)
     {
         $pelayananInput = PelayananInput::findOrFail($id);
+        // if ($pelayananInput->status !== 'Pengajuan') {
+        //     return redirect()->route('pengajuan.index')->with('error', 'Status pengajuan harus "Pelayanan" untuk di-approve.');
+        // }
         $pelayananInput->update(['approved' => true]);
-        $pelayananInput->update(['status' => 'diterima']);
+        $pelayananInput->update(['status' => 'Diterima']);
 
         return redirect()->route('pengajuan.index')->with('success', 'Pelayanan Telah Disetujui');
     }
-
     public function disapprove($id)
     {
         $pelayananInput = PelayananInput::findOrFail($id);
+        // if ($pelayananInput->status !== 'Pengajuan') {
+        //     return redirect()->route('pengajuan.index')->with('error', 'Status pengajuan harus "Pelayanan" untuk di-approve.');
+        // }
         $pelayananInput->update(['approved' => false]);
         $pelayananInput->update(['status' => 'ditolak']);
 
