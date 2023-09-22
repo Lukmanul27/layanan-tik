@@ -78,7 +78,7 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($pengajuan->sortByDesc('updated_at') as $data)
-                                                    @if($data->status == 'diterima')
+                                                    @if($data->status == 'Diterima')
                                                     <tr>
                                                         <td>{{$loop->iteration}}.</td>
                                                         <td>
