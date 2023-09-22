@@ -7,13 +7,9 @@
         <li class="card">
             <div class="card-body px-4 py-3">
                 <div class="d-flex align-items-center flex-column">
-                    <span class="sidebar-link">Dark</span>
-                    <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
-                        <div class="form-check form-switch fs-6">
-                            <input class="form-check-input me-0" type="checkbox" id="toggle-dark" />
-                            <label class="form-check-label"></label>
-                        </div>
-                    </div>
+                    <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal" data-bs-target="#notifikasi">
+                        <i class="bi bi-bell-fill"></i>
+                    </button>
                 </div>
             </div>
         </li>
