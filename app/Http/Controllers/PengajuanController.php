@@ -14,12 +14,12 @@ class PengajuanController extends Controller
      */
     public function index()
     {
-        return view('pengajuan.index',[
-            'title'=>'Pengajuan',
-            'pengajuan'=>PelayananInput::get(),
-            'user'=>User::get(),
-            'petugasUsers'=>Role::where('name', 'Petugas')->firstOrFail()->users,
-        ]);
+        return view('pengajuan.index', [
+            'title' => 'Pengajuan',
+            'pengajuan' => PelayananInput::get(),
+            'user' => User::get(),
+            'petugasUsers' => Role::where('name', 'Petugas')->firstOrFail()->users,
+        ])->with('file');
     }
 
     public function approve($id)
@@ -44,62 +44,16 @@ class PengajuanController extends Controller
 
         return redirect()->route('pengajuan.index')->with('success', 'Pelayanan Telah Ditolak');
     }
-
-
     public function dashboard()
     {
         return view('pengajuan.dashboard_skpd');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-//
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        return view('pengajuan.show',[
-            'pengajuan'=>PelayananInput::get(),
-            'user'=>User::get(),
-            'petugasUsers'=>Role::where('name', 'Petugas')->firstOrFail()->users,
+        return view('pengajuan.show', [
+            'pengajuan' => PelayananInput::get(),
+            'user' => User::get(),
+            'petugasUsers' => Role::where('name', 'Petugas')->firstOrFail()->users,
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

@@ -32,14 +32,22 @@ class IsianlayananController extends Controller
      */
     public function store(Request $request)
     {
+        // Simpan data ke dalam database
         PelayananInput::create([
-            'pelayanan_id'=>$request->pelayanan_id,
-            'data'=> json_encode($request -> except('_token', 'pelayanan_id')),
-            'user_id'=>auth()->user()->id,
+            'pelayanan_id' => $request->pelayanan_id,
+            'data' => json_encode($request->except('_token', 'pelayanan_id')),
+            'user_id' => auth()->user()->id,
         ]);
+
+        // Periksa apakah file telah diunggah
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('uploads', $fileName, 'public');
+        }
+
         return redirect()->route('skpd.index')->with('success', 'Pelayanan Berhasil Diajukan');
     }
-
     /**
      * Display the specified resource.
      */

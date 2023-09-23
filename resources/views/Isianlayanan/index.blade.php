@@ -16,6 +16,7 @@
                                 @csrf
                                 <input type="hidden" value="{{ $form->id }}" name="pelayanan_id">
                                 <div id="form-jenis"></div>
+                                <input class="form-control form-control-sm" type="file" name="file">
                                 <hr />
                                 <div class="text-center">
                                     <button type="submit" class="badge bg-success"><i class="bi bi-floppy-fill"></i> Simpan</button>
