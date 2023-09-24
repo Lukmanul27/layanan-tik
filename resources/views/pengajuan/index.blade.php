@@ -19,7 +19,6 @@
                             <th>Nama Layanan</th>
                             <th>Tanggal</th>
                             <th>Status</th>
-                            <th>File</th>
                             <th>Detail</th>
                         </thead>
                         <tbody>
@@ -33,12 +32,6 @@
                                 <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
                                 <td>{{ $data->created_at->format('d-m-Y') }}</td>
                                 <td>{{ $data->status }}</td>
-                                <td>
-                                    Nama File: {{ basename($data->file_path) }}
-                                    <a class="btn btn-outline-primary rounded-pill btn-sm"
-                                        href="{{ Storage::url('public/uploads/' . basename($data->file_path)) }}"
-                                        target="_blank">Lihat File</a>
-                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button type="button" class="btn btn-outline-primary rounded-pill btn-sm"
@@ -116,7 +109,6 @@
                                 </td>
                             </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>
@@ -193,6 +185,14 @@
                             Berikut
                         </p>
                         <div id="form-input">{{ $data->data }}</div>
+                        <hr>
+                        <p>Berikut Merupakan Lampiran Dari {{ \App\Models\User::find($data->user_id)->name }}</p>
+                        <p>
+                            Nama File: {{ basename($data->file_path) }}
+                            <a class="btn btn-outline-primary rounded-pill btn-sm"
+                                href="{{ Storage::url('public/uploads/' . basename($data->file_path)) }}"
+                                target="_blank">Lihat File</a>
+                        </p>
                     </div>
                     <div class="modal-footer">
                         <div class="btn-group" role="group">
