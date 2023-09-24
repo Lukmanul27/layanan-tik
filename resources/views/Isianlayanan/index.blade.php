@@ -16,10 +16,13 @@
                                 @csrf
                                 <input type="hidden" value="{{ $form->id }}" name="pelayanan_id">
                                 <div id="form-jenis"></div>
-                                <!-- Form Unggah File -->
-                                <label for="file">Pilih File:</label>
-                                <input type="file" name="file" id="file" required>
-                                <br>
+                                <hr>
+                                            <div class="mb-3">
+                                                <h5 class="card-title">Upload File Pendukung</h5>
+                                                <label for="formFileSm" class="form-label">Pilih File Yang Memiliki Format PDF(.pdf):</label>
+                                                <input class="form-control form-control-sm" name="file" id="file" required type="file">
+                                              </div>
+                                       <hr>
                                 <div class="text-center">
                                     <button type="submit" class="badge bg-success"><i class="bi bi-floppy-fill"></i> Simpan</button>
                                 </div>

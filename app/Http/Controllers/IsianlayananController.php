@@ -39,11 +39,16 @@ class IsianlayananController extends Controller
         ]);
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('uploads', $fileName, 'public');
 
-            $pelayananInput->file_path = $fileName;
-            $pelayananInput->save();
+            if ($file->getClientOriginalExtension() === 'pdf') {
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $file->storeAs('uploads', $fileName, 'public');
+
+                $pelayananInput->file_path = $fileName;
+                $pelayananInput->save();
+            } else {
+                return redirect()->back()->with('error', 'Only PDF files are allowed for upload.');
+            }
         }
         return redirect()->route('skpd.index')->with('success', 'Pelayanan Berhasil Diajukan');
     }
