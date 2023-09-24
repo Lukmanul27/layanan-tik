@@ -11,7 +11,7 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('admin.create') }}">
                             @csrf
                             <div class="mb-3">
                                 <label for="email" class="form-label">Nama</label>

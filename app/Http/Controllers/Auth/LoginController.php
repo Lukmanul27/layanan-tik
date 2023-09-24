@@ -31,7 +31,6 @@ class LoginController extends Controller
      */
     public function authenticated(Request $request, $user)
     {
-        // Periksa peran pengguna setelah berhasil login
         if ($user->hasRole('admin')) {
             return redirect('/admin');
         } elseif ($user->hasRole('petugas')) {

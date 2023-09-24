@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Pelayanan;
 use App\Models\PelayananInput;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller {
     /**
@@ -26,17 +28,6 @@ class AdminController extends Controller {
         ]);
     }
     /**
-     * Show the form for creating a new resource.
-     */
-    public
-    function create() {
-        return view('admin.create', [
-            'title'=>'Role',
-            'roles'=>Role::all(),
-        ]);
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public
@@ -46,35 +37,29 @@ class AdminController extends Controller {
         return redirect() -> route('akun.index') -> with('success', 'User added successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public
-    function show($superadmin) {
-        //
+    public function show()
+    {
+        return view('admin.create',[
+            'title'=> 'Role',
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public
-    function edit(string $id) {
-        //
-    }
+    public function create(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public
-    function update(Request $request, string $id) {
-        //
-    }
+        // Buat akun pengguna
+        $user = new User([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+        $user->save();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public
-    function destroy(string $id) {
-        //
+        return redirect()->route('admin.create')->with('success', 'Akun pengguna berhasil dibuat.');
     }
 }
