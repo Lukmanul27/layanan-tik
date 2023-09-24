@@ -37,6 +37,7 @@ Route::group(["middleware" => ['role:admin']], function () {
     Route::post('/approve/{id}', [PengajuanController::class, 'approve'])->name('approve');
     Route::post('/disapprove/{id}', [PengajuanController::class, 'disapprove'])->name('disapprove');
     Route::get('/pengajuan/{id}', [PengajuanControlle::class, 'show'])->name('pengajuan.show');
+    Route::get('/admin/download/{filename}', [IsianlayananController::class, 'download'])->name('admin.download');
 });
 
 Route::group(["middleware" => ['role:petugas']], function () {
@@ -51,3 +52,5 @@ Route::post('/pengajuan_in', [IsianlayananController::class, 'store'])->name('Is
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/tracking', TrackingController::class);
 Route::post('/simpan-status', [PengajuanController::class, 'simpanStatus']);
+Route::get('/user/upload-form', 'FileUploadController@userUploadForm')->name('user.upload.form');
+Route::post('/user/upload', 'FileUploadController@userUpload')->name('user.upload');

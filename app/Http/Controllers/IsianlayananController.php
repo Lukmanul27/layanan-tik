@@ -32,20 +32,19 @@ class IsianlayananController extends Controller
      */
     public function store(Request $request)
     {
-        // Simpan data ke dalam database
-        PelayananInput::create([
+        $pelayananInput = PelayananInput::create([
             'pelayanan_id' => $request->pelayanan_id,
             'data' => json_encode($request->except('_token', 'pelayanan_id')),
             'user_id' => auth()->user()->id,
         ]);
-
-        // Periksa apakah file telah diunggah
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $file->storeAs('uploads', $fileName, 'public');
-        }
 
+            $pelayananInput->file_path = $fileName;
+            $pelayananInput->save();
+        }
         return redirect()->route('skpd.index')->with('success', 'Pelayanan Berhasil Diajukan');
     }
     /**
@@ -57,7 +56,16 @@ class IsianlayananController extends Controller
 
         return view('Isianlayanan.index', compact('form'));
     }
+    public function download($filename)
+    {
+        $file = storage_path('app/public/uploads/' . $filename);
 
+        if (file_exists($file)) {
+            return response()->download($file);
+        } else {
+            return redirect()->back()->with('error', 'File tidak ditemukan.');
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      */

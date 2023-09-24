@@ -2,8 +2,11 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">List Pengajuan Masuk</h1>
+    <div class="row">
+        <div class="col-12 col-md-6 order-md-1 order-last">
+            <h1 class="h3 mb-0 text-gray-800">List Pengajuan Masuk</h1>
+            <p class="text-subtitle text-muted">Berikut List Permintaan Masuk</p>
+        </div>
     </div>
     <div class="card border-left-primary shadow h-100 py-2">
         <div class="card-body">
@@ -16,7 +19,8 @@
                             <th>Nama Layanan</th>
                             <th>Tanggal</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>File</th>
+                            <th>Detail</th>
                         </thead>
                         <tbody>
                             @foreach($pengajuan->sortByDesc('created_at') as $data)
@@ -29,6 +33,12 @@
                                 <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
                                 <td>{{ $data->created_at->format('d-m-Y') }}</td>
                                 <td>{{ $data->status }}</td>
+                                <td>
+                                    Nama File: {{ basename($data->file_path) }}
+                                    <a class="btn btn-outline-primary rounded-pill btn-sm"
+                                        href="{{ Storage::url('public/uploads/' . basename($data->file_path)) }}"
+                                        target="_blank">Lihat File</a>
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button type="button" class="btn btn-outline-primary rounded-pill btn-sm"
@@ -47,10 +57,14 @@
         </div>
     </div>
 </div>
+<hr>
 {{-- Diterima --}}
 <div class="container-fluid">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">List Pengajuan Diterima</h1>
+    <div class="row">
+        <div class="col-12 col-md-6 order-md-1 order-last">
+            <h1 class="h3 mb-0 text-gray-800">List Pengajuan Diterima</h1>
+            <p class="text-subtitle text-muted">Berikut List Permintaan Diterima</p>
+        </div>
     </div>
     <div class="card border-left-primary shadow h-100 py-2">
         <div class="card-body">
@@ -101,11 +115,14 @@
         </div>
     </div>
 </div>
-
+<hr>
 {{-- Ditolak --}}
 <div class="container-fluid">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">List Pengajuan Ditolak</h1>
+    <div class="row">
+        <div class="col-12 col-md-6 order-md-1 order-last">
+            <h1 class="h3 mb-0 text-gray-800">List Pengajuan Ditolak</h1>
+            <p class="text-subtitle text-muted">Berikut List Permintaan Ditolak</p>
+        </div>
     </div>
     <div class="card border-left-primary shadow h-100 py-2">
         <div class="card-body">
