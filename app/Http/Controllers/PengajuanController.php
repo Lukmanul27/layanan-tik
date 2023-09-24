@@ -21,7 +21,6 @@ class PengajuanController extends Controller
             'petugasUsers' => Role::where('name', 'Petugas')->firstOrFail()->users,
         ])->with('file');
     }
-
     public function approve($id)
     {
         $pelayananInput = PelayananInput::findOrFail($id);
@@ -55,5 +54,31 @@ class PengajuanController extends Controller
             'user' => User::get(),
             'petugasUsers' => Role::where('name', 'Petugas')->firstOrFail()->users,
         ]);
+    }
+    public function store(Request $request)
+    {
+        $id = $request->input('id');
+
+        $pelayananInput = PelayananInput::findOrFail($id);
+
+        if ($pelayananInput->status !== 'Diterima') {
+            return redirect()->route('pengajuan.show', $id)->with('error', 'Pengajuan harus dalam status "Diterima" sebelum menunjuk petugas.');
+        }
+
+        $validatedData = $request->validate([
+            'petugas_id' => 'required|exists:users,id',
+        ]);
+
+        $pelayananInput->petugas_id = $validatedData['petugas_id'];
+
+        $petugas = User::find($validatedData['petugas_id']);
+        $pelayananInput->petugas_data = [
+            'id' => $petugas->id,
+            'name' => $petugas->name,
+        ];
+
+        $pelayananInput->save();
+
+        return redirect()->route('pengajuan.index')->with('success', 'Petugas telah ditunjuk untuk pengajuan ini.');
     }
 }

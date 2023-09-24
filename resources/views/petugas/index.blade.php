@@ -29,7 +29,7 @@
                                     <div class="col-md-5 col-lg-12 col-xl-12 col-xxl-5">
                                         <h6 class="text font-semibold">Permintaan Layanan
                                             <span class="font-extrabold mb-0">
-                                                {{ $totalLayanan }}
+                                                {{ $totalPengajuan }}
                                             </span>
                                         </h6>
                                     </div>
@@ -77,18 +77,15 @@
                                                     <th>Tanggal</th>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($pengajuan->sortByDesc('updated_at') as $data)
-                                                    @if($data->status == 'Diterima')
+                                                    @foreach($pengajuan->where('status',
+                                                    'Diterima')->sortByDesc('updated_at') as $data)
                                                     <tr>
                                                         <td>{{$loop->iteration}}.</td>
-                                                        <td>
-                                                            {{ \App\Models\User::find($data->user_id)->name }}
-                                                        </td>
+                                                        <td>{{ \App\Models\User::find($data->user_id)->name }}</td>
                                                         <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}
                                                         </td>
                                                         <td>{{ $data->updated_at->format('Y-m-d') }}</td>
                                                     </tr>
-                                                    @endif
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -124,30 +121,3 @@
 </div>
 @endsection
 
-<div class="modal fade" id="notifikasi" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Notifikasi
-                </h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <i data-feather="x"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Ada Layanan Baru</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
-                    <i class="bx bx-x d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">Close</span>
-                </button>
-                <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                    <i class="bx bx-check d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">Accept</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>

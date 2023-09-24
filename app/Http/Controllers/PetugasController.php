@@ -18,17 +18,22 @@ class PetugasController extends Controller {
         return view('petugas.index', [
             'title'=>'Dashboard',
             'pengajuan' => PelayananInput::get(),
+            'totalPengajuan'=>PelayananInput::count(),
             'totalLayanan' => Pelayanan::count(),
             'pelayanan' => Pelayanan::get(),
         ]);
     }
     public function layananmasuk()
     {
-        return view('petugas.layananmasuk',[
-            'title'=>'Permintaan Layanan',
-            'pengajuan'=>PelayananInput::get(),
-            'user'=>User::get(),
-            'petugasUsers'=>Role::where('name', 'Petugas')->firstOrFail()->users,
+        $adminUserId = auth()->user()->id;
+
+        $pengajuan = PelayananInput::where('petugas_id', $adminUserId)->get();
+
+        return view('petugas.layananmasuk', [
+            'title' => 'Permintaan Layanan',
+            'pengajuan' => $pengajuan,
+            'user' => User::get(),
+            'petugasUsers' => Role::where('name', 'Petugas')->firstOrFail()->users,
         ]);
     }
 }

@@ -45,7 +45,7 @@
                                         @csrf
                                         <input type="hidden" name="process_status" value="diproses">
                                         <button type="submit" class="btn btn-outline-danger rounded-pill btn-sm">
-                                            <i class="bi bi-x-circle"></i> Diproses
+                                            <i class="bi bi-recycle"></i> Diproses
                                         </button>
                                     </form>
 
@@ -100,18 +100,10 @@
                         <div id="form-input">{{ $data->data }}</div>
                     </div>
                     <div class="modal-footer">
-                        <div class="btn-group" role="group">
-                            <form action="{{ route('approve', $data->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-outline-success rounded-pill btn-sm"><i
-                                        class="bi bi-check2-circle"></i> Terima</button>
-                            </form>
-                            <form action="{{ route('disapprove', $data->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-outline-danger rounded-pill btn-sm"><i
-                                        class="bi bi-x-circle"></i> Tolak</button>
-                            </form>
-                        </div>
+                        <button type="button" class="btn btn-light-success" data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Close</span>
+                        </button>
                     </div>
                 </div>
             </div>

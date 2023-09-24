@@ -77,6 +77,7 @@
                             <th>Nama Layanan</th>
                             <th>Tanggal</th>
                             <th>Status</th>
+                            <th>Nama Petugas</th>
                             <th>Petugas</th>
                             <th></th>
                         </thead>
@@ -90,6 +91,13 @@
                                 <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
                                 <td>{{ $data->created_at->format('d-m-Y') }}</td>
                                 <td>{{ $data->status }}</td>
+                                <td>
+                                    @if (!empty($data->petugas_data))
+                                    {{ json_decode($data->petugas_data)->name }}
+                                    @else
+                                    Belum Ada Petugas Dipilih
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button type="button" class="btn btn-outline-primary rounded-pill btn-sm"
@@ -108,6 +116,7 @@
                                 </td>
                             </tr>
                             @endforeach
+
                         </tbody>
                     </table>
                 </div>
@@ -222,12 +231,22 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        Tentukan Petugas Disini
-                    </div>
-                    <div class="modal-footer">
-                        <div class="btn-group" role="group">
-                            Tombol Simpan
-                        </div>
+                        <h2>Menunjuk Petugas</h2>
+                        <form method="POST" action="{{ route('pengajuan.store', ['id' => $data->id]) }}">
+                            @csrf
+                            <div class="form-group">
+                                <label for="petugas_id">Pilih Petugas:</label>
+                                <select class="form-control" id="petugas_id" name="petugas_id">
+                                    @foreach ($petugasUsers as $petugas)
+                                    <option value="{{ $petugas->id }}">{{ $petugas->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                <button type="submit" class="btn btn-primary">Tunjuk Petugas</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

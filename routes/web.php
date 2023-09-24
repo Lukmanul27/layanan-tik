@@ -31,6 +31,7 @@ Route::group(["middleware" => ['role:admin']], function () {
     Route::resource('/admin', AdminController::class);
     Route::get('/admin/create-user', [AdminController::class, 'show'])->name('admin.create');
     Route::post('/admin/create-user', [AdminController::class, 'create']);
+    Route::post('/pengajuan/{id}/store', [PengajuanController::class, 'store'])->name('pengajuan.store');
     Route::resource('/pelayanan', PelayananController::class);
     Route::resource('/pengajuan', PengajuanController::class);
     Route::resource('/akun', AkunController::class);
