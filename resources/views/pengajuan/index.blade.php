@@ -215,7 +215,7 @@
                 role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Detail Pelayanan
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Pilih Petugas Untuk Pelayanan
                             {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
@@ -223,6 +223,11 @@
                     </div>
                     <div class="modal-body">
                         Tentukan Petugas Disini
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group" role="group">
+                            Tombol Simpan
+                        </div>
                     </div>
                 </div>
             </div>
