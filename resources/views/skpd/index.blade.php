@@ -45,7 +45,7 @@
                     <th>Nama Layanan</th>
                     <th>Tanggal</th>
                     <th>Status</th>
-                    <th>Progres</th>
+                    <th>Status Proses</th>
                 </thead>
                 <tbody>
                     @foreach($pengajuan->where('user_id', auth()->user()->id)->sortByDesc('updated_at') as $data)
@@ -54,7 +54,7 @@
                         <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
                         <td>{{ $data->updated_at->format('Y-m-d') }}</td>
                         <td>{{ $data->status }}</td>
-                        <td>Proses</td>
+                        <td>{{ $data->process_status }}</td>
                     </tr>
                     @endforeach
                 </tbody>

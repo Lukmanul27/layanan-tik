@@ -36,4 +36,41 @@ class PetugasController extends Controller {
             'petugasUsers' => Role::where('name', 'Petugas')->firstOrFail()->users,
         ]);
     }
+    public function store(Request $request)
+    {
+        $id = $request->input('id');
+
+        // Find the relevant PelayananInput record by ID
+        $pelayananInput = PelayananInput::find($id);
+
+        if (!$pelayananInput) {
+            return redirect()->route('petugas.layananmasuk')->with('error', 'Rekaman tidak ditemukan.');
+        }
+
+        // Update the process_status to the value from the request
+        $process_status = $request->input('process_status');
+        $pelayananInput->process_status = $process_status;
+        $pelayananInput->save();
+
+        return redirect()->route('petugas.layananmasuk')->with('success', 'Status berhasil diperbarui.');
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Find the relevant PelayananInput record by ID
+        $pelayananInput = PelayananInput::find($id);
+
+        if (!$pelayananInput) {
+            return redirect()->route('petugas.layananmasuk')->with('error', 'Rekaman tidak ditemukan.');
+        }
+
+        // Get the new process_status value from the form submission
+        $process_status = $request->input('process_status');
+
+        // Update the process_status to the new value
+        $pelayananInput->process_status = $process_status;
+        $pelayananInput->save();
+
+        return redirect()->route('petugas.layananmasuk')->with('success', 'Status berhasil diperbarui.');
+    }
 }

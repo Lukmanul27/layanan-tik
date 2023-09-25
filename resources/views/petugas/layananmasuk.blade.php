@@ -17,11 +17,12 @@
                             <th>Nama Layanan</th>
                             <th>Tanggal</th>
                             <th>Status</th>
+                            <th>Status Progres</th>
                             <th>Progres</th>
                             <th></th>
                         </thead>
                         <tbody>
-                            @foreach($pengajuan->sortByDesc('updated_at') as $data)
+                            @foreach($pengajuan->sortByDesc('create_at') as $data)
                             @if($data->status == 'Diterima')
                             <tr>
                                 <td>{{$loop->iteration}}.</td>
@@ -31,29 +32,20 @@
                                 <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
                                 <td>{{ $data->updated_at->format('Y-m-d') }}</td>
                                 <td>{{ $data->status }}</td>
+                                <td>{{ $data->process_status }}</td>
                                 <td>
-                                    <form action="#"
-                                        method="POST">
-                                        <input type="hidden" name="process_status" value="dalam_antrian">
-                                        <button type="submit" class="btn btn-outline-info rounded-pill btn-sm">
+                                    <form action="{{ route('updateStatus', ['id' => $data->id]) }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="process_status" id="process_status" value="">
+                                        <button type="submit" class="btn btn-outline-info rounded-pill btn-sm" onclick="setProcessStatus('dalam_antrian')">
                                             <i class="bi bi-check2-circle"></i> Dalam Antrian
                                         </button>
-                                    </form>
 
-                                    <form action="#"
-                                        method="POST">
-                                        @csrf
-                                        <input type="hidden" name="process_status" value="diproses">
-                                        <button type="submit" class="btn btn-outline-danger rounded-pill btn-sm">
+                                        <button type="submit" class="btn btn-outline-danger rounded-pill btn-sm" onclick="setProcessStatus('diproses')">
                                             <i class="bi bi-recycle"></i> Diproses
                                         </button>
-                                    </form>
 
-                                    <form action="#"
-                                        method="POST">
-                                        @csrf
-                                        <input type="hidden" name="process_status" value="selesai">
-                                        <button type="submit" class="btn btn-outline-success rounded-pill btn-sm">
+                                        <button type="submit" class="btn btn-outline-success rounded-pill btn-sm" onclick="setProcessStatus('selesai')">
                                             <i class="bi bi-check2-all"></i> Selesai
                                         </button>
                                     </form>
@@ -117,5 +109,8 @@
 <script>
     $('#table').dataTable()
 
+    function setProcessStatus(status) {
+        document.getElementById('process_status').value = status;
+    }
 </script>
 @endsection
