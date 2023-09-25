@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use PDF;
 
 class AdminController extends Controller {
     /**
@@ -61,5 +62,22 @@ class AdminController extends Controller {
         $user->save();
 
         return redirect()->route('admin.create')->with('success', 'Akun pengguna berhasil dibuat.');
+    }
+    public
+    function laporan() {
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.laporan_admin',[
+            'totalUsers'=>User::count(),
+            'totalLayanan'=>Pelayanan::count(),
+            'totalPermintaan'=>PelayananInput::count(),
+            'pelayanan'=>Pelayanan::get(),
+            'akun'=>User::get(),
+            'role'=>Role::get(),
+            'totalRole'=>Role::count(),
+            'pengajuan' => PelayananInput::get(),
+            'user' => User::get(),
+            'petugasUsers' => Role::where('name', 'Petugas')->firstOrFail()->users,
+        ]);
+        // return $pdf->download('admin.index');
+        return $pdf->stream();
     }
 }

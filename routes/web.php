@@ -41,6 +41,7 @@ Route::group(["middleware" => ['role:admin']], function () {
     Route::post('/disapprove/{id}', [PengajuanController::class, 'disapprove'])->name('disapprove');
     Route::get('/pengajuan/{id}', [PengajuanControlle::class, 'show'])->name('pengajuan.show');
     Route::get('/admin/download/{filename}', [IsianlayananController::class, 'download'])->name('admin.download');
+    Route::get('/admin/pages/laporan/', [AdminController::class, 'laporan'])->name('admin.laporan.index');
 });
 
 Route::group(["middleware" => ['role:petugas']], function () {
