@@ -179,15 +179,31 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Pada Tanggal {{ $data->created_at->format('d-m-Y') }},
-                            {{ \App\Models\User::find($data->user_id)->name }} Telah Mengajukan Permintaan Layanan
-                            {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}, Dengan Detail Sebagai
-                            Berikut
+                        <p class="text-center">
+                            {{ \App\Models\User::find($data->user_id)->name }} <br>
+                            <u>
+                                Layanan {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}
+                            </u><br>
+                            <small>
+
+                                Tanggal {{ $data->created_at->format('d-m-Y') }}
+                            </small>
                         </p>
-                        <div id="form-input">{{ $data->data }}</div>
                         <hr>
-                        <p>Berikut Merupakan Lampiran Dari {{ \App\Models\User::find($data->user_id)->name }}</p>
-                        <p>
+                        <div>
+                            <ul>
+
+                            @foreach (json_decode($data->data,true) as $key=>$value)
+                            @if ($loop->iteration>1)
+                            <li>{{ $value }}</li>
+                            @endif
+                            @endforeach
+
+                        </ul>
+                        </div>
+                        <hr>
+                        {{-- <p>Berikut Merupakan Lampiran Dari {{ \App\Models\User::find($data->user_id)->name }}</p>
+                        <p> --}}
                             Nama File: {{ basename($data->file_path) }}
                             <a class="btn btn-outline-primary rounded-pill btn-sm"
                                 href="{{ Storage::url('public/uploads/' . basename($data->file_path)) }}"

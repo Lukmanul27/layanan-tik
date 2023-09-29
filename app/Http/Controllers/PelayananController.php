@@ -41,9 +41,9 @@ class PelayananController extends Controller
          return redirect()->route('pelayanan.index')->with('success', 'Pelayanan added successfully');
      }
 
-     public function edit(Pelayanan $pelayanan){
-        return view('pelayanan.edit', compact('pelayanan'));
-     }
+     public function edit(Pelayanan $pelayanan) {
+        return view('pelayanan.edit', ['pelayanan' => $pelayanan, 'title' => 'Pelayanan']);
+    }
 
      public function update(Pelayanan $pelayanan, Request $request){
         $pelayanan->update($request->only('nama', 'deskripsi', 'form'));

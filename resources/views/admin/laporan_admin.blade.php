@@ -59,26 +59,6 @@
         </tbody>
     </table>
     <hr>
-    <h3>List Akun Terdaftar:</h3>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Nama</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($akun as $item)
-            <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $item->name }}</td>
-                <td>{{ $item->email }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    <hr>
     <h3>List Pengajuan Masuk</h3>
     <p>Berikut List Permintaan Masuk</p>
     <table border="1">
