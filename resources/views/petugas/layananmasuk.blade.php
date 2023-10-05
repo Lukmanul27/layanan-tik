@@ -84,12 +84,25 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Pada Tanggal {{ $data->created_at->format('d-m-Y') }},
-                            {{ \App\Models\User::find($data->user_id)->name }} Telah Mengajukan Permintaan Layanan
-                            {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}, Dengan Detail Sebagai
-                            Berikut
+                        <p class="text-center">
+                            {{ \App\Models\User::find($data->user_id)->name }} <br>
+                            <u>
+                                Layanan {{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}
+                            </u><br />
+                            <small>
+                                Tanggal {{ $data->created_at->format('d-m-Y') }}
+                            </small>
                         </p>
-                        <div id="form-input">{{ $data->data }}</div>
+                        <hr>
+                        <div>
+                            <ul>
+                                @foreach (json_decode($data->data,true) as $key=>$inputan)
+                                @if ($loop->iteration>1)
+                                <li>{{ $inputan }}</li>
+                                @endif
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-success" data-bs-dismiss="modal">

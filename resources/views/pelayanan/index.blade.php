@@ -31,13 +31,9 @@
                                     <td>
                                         <a href="{{route('pelayanan.edit',$item->id)}}"
                                             class="badge bg-warning">Edit</a>
-                                        <form action="{{route('pelayanan.destroy',$item->id)}}" class="d-inline"
-                                            method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" onclick="return confirm('Are you sure?')"
-                                                class="badge bg-danger m-0 border-0">hapus</button>
-                                        </form>
+                                        <button type="button" class="badge bg-danger m-0 border-0"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#deleteConfirmationModal-{{ $item->id }}">hapus</button>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -49,5 +45,30 @@
         </div>
     </div>
 </div>
-
+@foreach ($pelayanan as $item)
+<div class="modal fade" id="deleteConfirmationModal-{{ $item->id }}" tabindex="-1" role="dialog"
+    aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmationModalLabel">Konfirmasi Hapus</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                Apakah kamu yakin ingin menghapus pelayanan <span class="text-danger capitalize">{{ $item->nama }}</span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="badge bg-secondary close" data-bs-dismiss="modal" aria-label="Close">Cancel
+                <form action="{{ route('pelayanan.destroy', $item->id) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="badge bg-danger">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection

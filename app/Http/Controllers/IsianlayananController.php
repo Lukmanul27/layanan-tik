@@ -52,7 +52,7 @@ class IsianlayananController extends Controller
                 return redirect()->back()->with('error', 'Only PDF files are allowed for upload.');
             }
         }
-        return redirect()->route('skpd.index')->with('success', 'Pelayanan Berhasil Diajukan');
+        return redirect('http://layanan.test:8080/skpd#pelayanan')->with('success', 'Pelayanan Berhasil Diajukan');
     }
     /**
      * Display the specified resource.

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pelayanan;
+use App\Models\PelayananInput;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -50,9 +51,18 @@ class PelayananController extends Controller
 
          return redirect()->route('pelayanan.index')->with('success', 'Pelayanan updated successfully');
      }
-     public function destroy(Pelayanan $pelayanan){
-        $pelayanan->delete();
+     public function destroy($id)
+    {
+        $isUsed = PelayananInput::where('pelayanan_id', $id)->exists();
 
-         return redirect()->route('pelayanan.index')->with('success', 'Pelayanan delete successfully');
-     }
+        if ($isUsed) {
+            return redirect()->route('pelayanan.index')
+                ->with('error', 'Pelayanan tidak dapat dihapus karena sedang digunakan.');
+        }
+
+        Pelayanan::destroy($id);
+
+        return redirect()->route('pelayanan.index')
+            ->with('success', 'Pelayanan berhasil dihapus.');
+    }
 }

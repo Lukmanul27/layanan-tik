@@ -51,7 +51,7 @@
                     @foreach($pengajuan->where('user_id', auth()->user()->id)->sortByDesc('updated_at') as $data)
                     <tr>
                         <td>{{$loop->iteration}}.</td>
-                        <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama }}</td>
+                        <td>{{ \App\Models\Pelayanan::find($data->pelayanan_id)->nama ?? '-' }}</td>
                         <td>{{ $data->updated_at->format('Y-m-d') }}</td>
                         <td>{{ $data->status }}</td>
                         <td>{{ $data->process_status }}</td>

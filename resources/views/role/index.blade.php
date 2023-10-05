@@ -5,16 +5,15 @@
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Role User</h1>
-        <a class="badge bg-success" href="{{ route('role.create') }}" role="button">
+        {{-- <a class="badge bg-success" href="{{ route('role.create') }}" role="button">
             Tamabah Role
-        </a>
+        </a> --}}
     </div>
 
     <div class="card border-left-info shadow h-100 py-2">
         <div class="card-body">
             {{-- <div class="row no-gutters align-items-center"> --}}
             <div class="col mr-2">
-
                 @foreach($roles as $role)
                 <div class="card mb-2">
                     <div class="card-header">
@@ -26,8 +25,8 @@
                             @foreach ($role->users as $row)
                             <li class="list-group-item">
                                 {{ $row->name }}
-                                <a href="" class="float-right text-danger"
-                                    onclick="return confirm('apakah anda yakin?')">hapus</a>
+                                {{-- <a href="" class="float-right text-danger"
+                                    onclick="return confirm('apakah anda yakin?')">hapus</a> --}}
                             </li>
                             @endforeach
                         </ul>

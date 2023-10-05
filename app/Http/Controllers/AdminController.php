@@ -80,4 +80,17 @@ class AdminController extends Controller {
         // return $pdf->download('admin.index');
         return $pdf->stream();
     }
+    public function resetSubmissions()
+    {
+        $pelayananInputs = PelayananInput::all();
+
+        foreach ($pelayananInputs as $pelayananInput) {
+            if (auth()->user()->id !== $pelayananInput->user_id) {
+                continue;
+            }
+
+            $pelayananInput->delete();
+        }
+        return redirect()->route('pengajuan.index')->with('success', 'All submissions have been reset.');
+    }
 }
