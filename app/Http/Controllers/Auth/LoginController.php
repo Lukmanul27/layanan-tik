@@ -11,40 +11,36 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
     public function authenticated(Request $request, $user)
     {
         if ($user->hasRole('admin')) {
-            return redirect('/admin');
+            return redirect('/admin')->with('success', 'Selamat Datang ' . $user->name);
         } elseif ($user->hasRole('petugas')) {
-            return redirect('/petugas');
+            return redirect('/petugas')->with('success', 'Selamat Datang ' . $user->name);
         } else {
-            return redirect('/home');
+            return redirect('/home')->with('success', 'Selamat Datang ' . $user->name);
         }
     }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        return redirect()
+            ->back()
+            ->withInput($request->only($this->username(), 'remember'))
+            ->withErrors([
+                $this->username() => trans('auth.failed'),
+            ])
+            ->with('error', 'Email atau Password Salah');
+    }
+
+
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

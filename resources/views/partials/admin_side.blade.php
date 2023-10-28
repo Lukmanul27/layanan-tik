@@ -4,9 +4,8 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo" style="display: flex; align-items: center;">
                     <a href="{{ route('admin.index') }}">
-                        <i class="bi bi-brush"></i>
-                        <span class="logo-text"
-                            style="margin-left: 10px; font-size: 24px; font-weight: bold; color: #498ddb;">
+                        <img src="{{ asset('assets/images/logo/favicon.png') }}" alt="PeTIK Logo">
+                        <span class="logo-text" style="margin-left: 10px; font-size: 24px; font-weight: bold; color: #498ddb;">
                             PeTIK
                         </span>
                     </a>

@@ -148,7 +148,7 @@
                             <th></th>
                         </thead>
                         <tbody>
-                            @foreach($pengajuan->where('status', 'Ditolak')->sortByDesc('created_at') as $data)
+                            @foreach($pengajuan->where('status', 'ditolak')->sortByDesc('created_at') as $data)
                             <tr>
                                 <td>{{$loop->iteration}}.</td>
                                 <td>{{ \App\Models\User::find($data->user_id)->name }}</td>
