@@ -39,7 +39,7 @@ class PengajuanController extends Controller
         //     return redirect()->route('pengajuan.index')->with('error', 'Status pengajuan harus "Pelayanan" untuk di-approve.');
         // }
         $pelayananInput->update(['approved' => false]);
-        $pelayananInput->update(['status' => 'ditolak']);
+        $pelayananInput->update(['status' => 'Ditolak']);
 
         return redirect()->route('pengajuan.index')->with('success', 'Pelayanan Telah Ditolak');
     }

@@ -38,6 +38,7 @@ class IsianlayananController extends Controller
             'pelayanan_id' => $request->pelayanan_id,
             'data' => json_encode($request->except('_token', 'pelayanan_id')),
             'user_id' => auth()->user()->id,
+            'status' => 'Pengajuan',
         ]);
         if ($request->hasFile('file')) {
             $file = $request->file('file');
@@ -52,7 +53,7 @@ class IsianlayananController extends Controller
                 return redirect()->back()->with('error', 'Only PDF files are allowed for upload.');
             }
         }
-        return redirect('http://layanan.test:8080/skpd#pelayanan')->with('success', 'Pelayanan Berhasil Diajukan');
+        return redirect()->route('skpd.index')->with('success', 'Pelayanan Berhasil Diajukan');
     }
     /**
      * Display the specified resource.
